@@ -16,7 +16,7 @@ public class Coordenada {
 		y=otra.y;
 	}
 	
-	public int getNumeroCoordenada() {
+	public static int getNumeroCoordenadas(){
 		return NUMERO_COORDENADA;
 	}
 	
@@ -28,9 +28,17 @@ public class Coordenada {
 
 	public int getY() {return y;}
 	
-	/*el baile del sambito
-	 * a todos nos gusta
-	 */
+	public Coordenada suma(Coordenada otra) {
+		Coordenada ret= new Coordenada(otra.x+x,otra.y+y);
+		return ret;
+	}
 	
+	public boolean equal(Object otro) {
+		if(otro instanceof Coordenada) {
+			Coordenada other =(Coordenada) otro;
+			return (x==other.x)&& (y==other.y);
+		}
+		else {return false;}
+	}
 	
 }
