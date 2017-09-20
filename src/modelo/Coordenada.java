@@ -28,7 +28,9 @@ public class Coordenada {
 
 	public int getY() {return y;}
 	
-	
+	/*el baile del sambito
+	 * a todos nos gusta
+	 */
 	
 	
 }
