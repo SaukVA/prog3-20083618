@@ -33,7 +33,7 @@ public class Coordenada {
 		return ret;
 	}
 	
-	public boolean equal(Object otro) {
+	public boolean equals(Object otro) {
 		if(otro instanceof Coordenada) {
 			Coordenada other =(Coordenada) otro;
 			return (x==other.x)&& (y==other.y);
