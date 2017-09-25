@@ -35,7 +35,7 @@ public class Coordenada {
 	}
 	
 	public String toString() {
-		return "Coordenada [x=" + x + ", y=" + y + "]";
+		return "(" + x + "," + y + ")";
 	}
 
 	public int getX() {return x;}
