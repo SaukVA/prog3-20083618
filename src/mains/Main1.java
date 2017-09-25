@@ -60,6 +60,6 @@ public class Main1 {
 			System.out.println("c7 y c3 son iguales");
 		}
 
-		System.out.println("Num.total de coordenadas: " + Coordenada.getNumeroCoordenadas());		
+		System.out.println("Num.total de coordenadas: " + Coordenada.getNumeroCoordenadas());		1 of 2 branches missed.
 	}
 }
