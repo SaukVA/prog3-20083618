@@ -1,10 +1,15 @@
 package modelo;
 
+import java.util.HashMap;
+
+import modelo.Coordenada;
+import modelo.EstadoCelda;
+
 public class Tablero {
 
-	private Coordenada dimensiones;
+	private HashMap<Coordenada,EstadoCelda> celdas;
 	
-	public Tablero (Coordenada dimensiones) {
-		this.dimensiones(dimensiones);
+	public Tablero (Coordenada d) {
+		celdas.put(d,);
 	}
 }
