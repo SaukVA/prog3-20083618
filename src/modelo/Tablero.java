@@ -10,27 +10,24 @@ import java.util.HashMap;
 
 
 public class Tablero {
-	private static final int Max=1;
-	private List<Coordenada> dimensiones = new ArrayList<Coordenada>();
+	
+	private Coordenada dimensiones;
 	private HashMap<Coordenada,EstadoCelda> celdas;
 	
 	public Tablero(Coordenada dimensiones) {
 		
-		int j=0;
-		
-		if(this.dimensiones.size()<=Max) {
-			this.dimensiones.add(new Coordenada(dimensiones));
+		if(dimensiones.getX()>0 && dimensiones.getY()>0) {
+			this.dimensiones=dimensiones;
 			for(int i=0; i<dimensiones.getX();i++) {
-				for(j=0;j<dimensiones.getY();j++) {
+				for(int j=0;j<dimensiones.getY();j++) {
 					this.celdas.put(new Coordenada(i,j),MUERTA);
 				}
-				j=0;
 			}
 		}
 	}
 
 	public Coordenada getDimensiones() {
-		return dimensiones.get(1);
+		return dimensiones;
 	}
 	
 	public Collection <Coordenada> getPosiciones(){
@@ -101,6 +98,10 @@ public class Tablero {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		return print;
+		
+		for (int i=0;i<this.dimensiones.getX()+1;i++) {
+			
+		}
+		return sb.toString();
 	}
 }
