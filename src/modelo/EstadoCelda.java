@@ -1,3 +1,3 @@
 package modelo;
 
-enum EstadoCelda{VIVA, MUERTA};
+public enum EstadoCelda { VIVA,MUERTA }

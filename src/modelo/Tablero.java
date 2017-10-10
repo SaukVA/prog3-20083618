@@ -2,7 +2,7 @@ package modelo;
 
 import static modelo.EstadoCelda.*;
 import modelo.Coordenada; 
-import java.util.List;
+//import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +20,7 @@ public class Tablero {
 			this.dimensiones=dimensiones;
 			for(int i=0; i<dimensiones.getX();i++) {
 				for(int j=0;j<dimensiones.getY();j++) {
-					this.celdas.put(new Coordenada(i,j),MUERTA);
+					this.celdas.put(new Coordenada(i,j),null);
 				}
 			}
 		}
@@ -99,8 +99,19 @@ public class Tablero {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		for (int i=0;i<this.dimensiones.getX()+1;i++) {
-			
+		for (int i=0;i<=this.dimensiones.getY()+1;i++) {
+			for(int j=0;j<=this.dimensiones.getX()+1;j++) {
+				
+				if(j==0 || j==dimensiones.getX()+1) {
+					if(i==0 || i==dimensiones.getY()+1) {sb.append("+");}
+					else {sb.append("|");}
+				}
+				else {
+					if(i==0 || i==dimensiones.getY()+1) {sb.append("-");}
+					else {sb.append(" ");}
+				}
+				if(j==dimensiones.getX()+1) {sb.append("\n");}
+			}
 		}
 		return sb.toString();
 	}
