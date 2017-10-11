@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Tablero {
 	
 	private Coordenada dimensiones;
-	private HashMap<Coordenada,EstadoCelda> celdas;
+	private HashMap<Coordenada,EstadoCelda> celdas = new HashMap<Coordenada,EstadoCelda>();
 	
 	public Tablero(Coordenada dimensiones) {
 		
@@ -20,7 +20,7 @@ public class Tablero {
 			this.dimensiones=dimensiones;
 			for(int i=0; i<dimensiones.getX();i++) {
 				for(int j=0;j<dimensiones.getY();j++) {
-					this.celdas.put(new Coordenada(i,j),null);
+					this.celdas.put(new Coordenada(i,j),MUERTA);
 				}
 			}
 		}
