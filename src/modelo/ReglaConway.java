@@ -20,6 +20,7 @@ public class ReglaConway {
 		}
 		
 		if(vivas==2 || vivas==3) {es=VIVA;}
+		else {es=MUERTA;}
 		
 		return es;
 	}

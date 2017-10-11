@@ -89,8 +89,17 @@ public class Tablero {
 		return resp;
 	}
 	
-	//boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {}
-	
+	/*boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
+		boolean resp=false;
+		 
+		Collection <Coordenada> coor = patron.getPosiciones();
+		int tam = coor.size();
+		
+		
+		
+		return resp;
+	}
+	*/
 	boolean contiene(Coordenada posicion) {
 		return celdas.containsKey(posicion);
 	}
@@ -109,7 +118,7 @@ public class Tablero {
 				else {
 					if(i==0 || i==dimensiones.getY()+1) {sb.append("-");}
 					else {
-						EstadoCelda es = celdas.get(new Coordenada(i-1,j-1));
+						EstadoCelda es = celdas.get(new Coordenada(j-1,i-1));
 						switch(es) {
 							case VIVA:
 								sb.append("*");
