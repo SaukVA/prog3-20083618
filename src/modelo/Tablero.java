@@ -95,7 +95,7 @@ public class Tablero {
 		return celdas.containsKey(posicion);
 	}
 	
-	@Override
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
@@ -108,7 +108,17 @@ public class Tablero {
 				}
 				else {
 					if(i==0 || i==dimensiones.getY()+1) {sb.append("-");}
-					else {sb.append(" ");}
+					else {
+						EstadoCelda es = celdas.get(new Coordenada(i-1,j-1));
+						switch(es) {
+							case VIVA:
+								sb.append("*");
+								break;
+							case MUERTA:
+								sb.append(" ");
+								break;
+						}
+					}
 				}
 				if(j==dimensiones.getX()+1) {sb.append("\n");}
 			}
