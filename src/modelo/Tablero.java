@@ -36,7 +36,7 @@ public class Tablero {
 	}
 	
 	public void muestraErrorPosicionInvalida(Coordenada c) {
-		System.out.printf("Error: La celda "+ c.toString() +" no existe");
+		System.out.printf("Error: La celda "+ c.toString() +" no existe\n");
 	}
 	
 	public EstadoCelda getCelda(Coordenada posicion) {
@@ -44,7 +44,7 @@ public class Tablero {
 			return celdas.get(new Coordenada(posicion));  
 		}
 		else {
-			return null;
+			return MUERTA;
 		}
 	}
 	
@@ -89,17 +89,27 @@ public class Tablero {
 		return resp;
 	}
 	
-	/*boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
-		boolean resp=false;
+	boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
+		boolean resp=true;
 		 
-		Collection <Coordenada> coor = patron.getPosiciones();
-		int tam = coor.size();
-		
-		
+		Collection <Coordenada> c = patron.getPosiciones();
+		for( Coordenada coor : c) {
+			Coordenada suma=coordenadaInicial.suma(coor);
+			if(!this.celdas.containsKey(suma) && resp) {
+				resp=false;
+				muestraErrorPosicionInvalida(suma);
+			}
+		}
+		if(resp) {
+			for(Coordenada coor: c) {
+				EstadoCelda e = patron.getCeldas(coor);
+				Coordenada suma2 = coordenadaInicial.suma(coor);
+				celdas.put(suma2, e);
+			}
+		}
 		
 		return resp;
 	}
-	*/
 	boolean contiene(Coordenada posicion) {
 		return celdas.containsKey(posicion);
 	}

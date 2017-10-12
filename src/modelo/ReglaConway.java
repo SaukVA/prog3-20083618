@@ -13,14 +13,14 @@ public class ReglaConway {
 		EstadoCelda es = MUERTA;
 		ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
 		int vivas=0;
-		for(int i=0; i<=Ar.size();i++) {
+		for(int i=0; i<Ar.size();i++) {
 			if(tablero.getCelda(Ar.get(i))==VIVA) {
 				vivas++;
 			}
 		}
 		
-		if(vivas==2 || vivas==3) {es=VIVA;}
-		else {es=MUERTA;}
+		if(vivas==3 && tablero.getCelda(posicion)==MUERTA) {es=VIVA;}
+		if((vivas==3 || vivas==2) && tablero.getCelda(posicion)==VIVA) {es=VIVA;}
 		
 		return es;
 	}
