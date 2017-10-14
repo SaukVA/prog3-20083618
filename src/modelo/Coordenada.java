@@ -19,6 +19,11 @@ public class Coordenada {
 	private int y;
 	private static int NUMERO_COORDENADA;
 	
+	/**Constructor de la Coordenada el cual  coge x e y los inicializa
+	 * 
+	 * @param x 
+	 * @param y
+	 */
 	public Coordenada(int x, int y) {
 		this.x=x;
 		this.y=y;
@@ -30,23 +35,42 @@ public class Coordenada {
 		y=otra.y;
 	}
 	
+	/**devuelve el numero de Coordenada que es
+	 * 
+	 * @return el numero de coordenada corespondiente
+	 */
 	public static int getNumeroCoordenadas(){
 		return NUMERO_COORDENADA;
 	}
 	
+	/**
+	 * devuelve la Coordenada en formato de String
+	 */
 	public String toString() {
 		return "(" + x + "," + y + ")";
 	}
-
+	
+	/** @return la X de a Coordenada
+	 */
 	public int getX() {return x;}
 
+	/** @return la Y de a Coordenada
+	*/
 	public int getY() {return y;}
 	
+	/**Funcion que suma dos coordenadas para obtener una nueva
+	 * 
+	 * @param otra Es la Coordenada que se va a sumar con la que realiza la funcion
+	 * @return Suma de ambas coordenadas 
+	 */
 	public Coordenada suma(Coordenada otra) {
 		Coordenada ret= new Coordenada(otra.x+x,otra.y+y);
 		return ret;
 	}
-
+	
+	/**
+	 * La funcion ashCode sirve para dar le un codigo unico a cada objeto
+	 */
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -54,7 +78,10 @@ public class Coordenada {
 		result = prime * result + y;
 		return result;
 	}
-
+	
+	/**
+	 * Sirve para comprobar que las dos coordenadas son iguales
+	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

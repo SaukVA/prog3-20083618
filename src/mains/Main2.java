@@ -17,6 +17,9 @@ public class Main2 {
 	public static void main(String[] args) {
 		// creamos un patrÃ³n
 		Tablero tableroPatron = new Tablero(new Coordenada(3,3));
+		
+		System.out.println(tableroPatron.getPosiciones());
+		
 		tableroPatron.setCelda(new Coordenada(0,0), EstadoCelda.MUERTA);
 		tableroPatron.setCelda(new Coordenada(1,0), EstadoCelda.VIVA);
 		tableroPatron.setCelda(new Coordenada(2,0), EstadoCelda.MUERTA);

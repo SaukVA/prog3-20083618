@@ -1,13 +1,28 @@
 package modelo;
 
+/**La clase ReglaConway se utiliza para la saber si las celdas 
+ * de un tablero cumplen la regla de tener 2 o 3 vecinas vivas
+ *  y si su estado es vivo, y la regla de vivir si tiene 3 celdas
+ *  vecinas vivas 
+ * 
+ * @author Saul Verdu Aparicio
+ */
+
 import java.util.ArrayList;
 import static modelo.EstadoCelda.*;
 
 public class ReglaConway {
 
-
+	/**Constructor de la Regla de Conway 
+	 */
 	public ReglaConway() {}
 	
+	/**Metodo que realiza la Regla de Conway a la celda de un tablero
+	 * 
+	 * @param tablero Tablero del cual  se van a estraer las coordenadas vecinas
+	 * @param posicion Coordenada de la que se quiere saber el estado para la siguiete actualizacion
+	 * @return Devuele el valor del estado de la celda en la proxima ejecucion
+	 */
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) {
 		
 		EstadoCelda es = MUERTA;
