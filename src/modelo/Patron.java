@@ -37,7 +37,7 @@ public class Patron {
 	 * @param posicion Coordenada que se le pasa como parametro a la funcion .getCelda()
 	 * @return resultados de la funcion
 	 */
-	public EstadoCelda getCeldas(Coordenada posicion){
+	public EstadoCelda getCelda(Coordenada posicion){
 		return tablero.getCelda(posicion);
 	}
 	

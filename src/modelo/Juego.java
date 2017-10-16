@@ -40,6 +40,7 @@ public class Juego {
 		}
 		else {
 			System.out.println("Error cargando plantilla " + p.getNombre() + " en "+posicionInicial.toString()+"\n");
+			tablero.muestraErrorPosicionInvalida(posicionInicial);
 		}
 	}
 	

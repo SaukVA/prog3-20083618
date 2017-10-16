@@ -28,8 +28,9 @@ public class Tablero {
 	 */
 	public Tablero(Coordenada dimensiones) {
 		
+		this.dimensiones=new Coordenada(dimensiones);
+		
 		if(dimensiones.getX()>0 && dimensiones.getY()>0) {
-			this.dimensiones=dimensiones;
 			int i=0;
 			while(i<this.dimensiones.getX()) {
 				int j=0;
@@ -77,7 +78,8 @@ public class Tablero {
 			return celdas.get(new Coordenada(posicion));  
 		}
 		else {
-			return MUERTA;
+			muestraErrorPosicionInvalida(posicion);
+			return null;
 		}
 	}
 	
@@ -89,6 +91,9 @@ public class Tablero {
 	public void setCelda(Coordenada posicion, EstadoCelda e) {
 		if(celdas.containsKey(new Coordenada(posicion))) {
 			celdas.put(new Coordenada(posicion),e);  
+		}
+		else {
+			muestraErrorPosicionInvalida(posicion);
 		}
 	}
 	
@@ -102,32 +107,42 @@ public class Tablero {
 		
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
 		
-		for(int i=0; i<=7;i++) {
-			switch(i) {
-				case 0: 
-					resp.add(new Coordenada(posicion.getX()-1,posicion.getY()-1));
-					break;
-				case 1: 
-					resp.add(new Coordenada(posicion.getX()-1,posicion.getY()));
-					break;
-				case 2: 
-					resp.add(new Coordenada(posicion.getX()-1,posicion.getY()+1));
-					break;
-				case 3: 
-					resp.add(new Coordenada(posicion.getX(),posicion.getY()+1));
-					break;
-				case 4: 
-					resp.add(new Coordenada(posicion.getX()+1,posicion.getY()+1));
-					break;
-				case 5: 
-					resp.add(new Coordenada(posicion.getX()+1,posicion.getY()));
-					break;
-				case 6: 
-					resp.add(new Coordenada(posicion.getX()+1,posicion.getY()-1));
-					break;
-				case 7: 
-					resp.add(new Coordenada(posicion.getX(),posicion.getY()-1));
-					break;
+		if(posicion.getX()>=0 && posicion.getY()>=0 && contiene(posicion)) {
+			for(int i=0; i<=7;i++) {
+				switch(i) {
+					case 0: 
+						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()-1)))
+							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()-1));
+						break;
+					case 1: 
+						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY())))
+							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()));
+						break;
+					case 2: 
+						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()+1)))
+							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()+1));
+						break;
+					case 3: 
+						if(contiene(new Coordenada(posicion.getX(),posicion.getY()+1)))
+							resp.add(new Coordenada(posicion.getX(),posicion.getY()+1));
+						break;
+					case 4: 
+						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()+1)))
+							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()+1));
+						break;
+					case 5: 
+						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY())))
+							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()));
+						break;
+					case 6:
+						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()-1)))
+							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()-1));
+						break;
+					case 7: 
+						if(contiene(new Coordenada(posicion.getX(),posicion.getY()-1)))
+							resp.add(new Coordenada(posicion.getX(),posicion.getY()-1));
+						break;
+				}
 			}
 		}
 		return resp;
@@ -140,25 +155,30 @@ public class Tablero {
 	 * @param coordenadaInicial Coordenada desde la que empezara a copiar el patron
 	 * @return nos dice si es posible o no copiar el patron dentro del tablero
 	 */
-	boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
+	public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
 		boolean resp=true;
 		 
-		Collection <Coordenada> c = patron.getPosiciones();
-		for( Coordenada coor : c) {
-			Coordenada suma=coordenadaInicial.suma(coor);
-			if(!this.celdas.containsKey(suma) && resp) {
-				resp=false;
-				muestraErrorPosicionInvalida(suma);
+		if(coordenadaInicial.getX()>=0 && coordenadaInicial.getY()>=0) {
+			Collection <Coordenada> c = patron.getPosiciones();
+			for( Coordenada coor : c) {
+				Coordenada suma=coordenadaInicial.suma(coor);
+				if(!this.celdas.containsKey(suma) && resp) {
+					resp=false;
+					muestraErrorPosicionInvalida(suma);
+				}
+			}
+			if(resp) {
+				for(Coordenada coor: c) {
+					EstadoCelda e = patron.getCelda(coor);
+					Coordenada suma2 = coordenadaInicial.suma(coor);
+					celdas.put(suma2, e);
+				}
 			}
 		}
-		if(resp) {
-			for(Coordenada coor: c) {
-				EstadoCelda e = patron.getCeldas(coor);
-				Coordenada suma2 = coordenadaInicial.suma(coor);
-				celdas.put(suma2, e);
-			}
+		else {
+			resp=false;
 		}
-		
+			
 		return resp;
 	}
 	
@@ -167,7 +187,7 @@ public class Tablero {
 	 * @param posicion Posicion de la que se quiere saber si pertenece 
 	 * @return Respuesta booleana
 	 */
-	boolean contiene(Coordenada posicion) {
+	public boolean contiene(Coordenada posicion) {
 		return celdas.containsKey(posicion);
 	}
 	
