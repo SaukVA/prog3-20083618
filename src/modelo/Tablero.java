@@ -176,6 +176,7 @@ public class Tablero {
 			}
 		}
 		else {
+			muestraErrorPosicionInvalida(coordenadaInicial);
 			resp=false;
 		}
 			
