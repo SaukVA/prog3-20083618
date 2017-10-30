@@ -35,7 +35,12 @@ public class Tablero {
 			while(i<this.dimensiones.getX()) {
 				int j=0;
 				while(j<this.dimensiones.getY()) {
-					celdas.put(new Coordenada(i,j),MUERTA);
+					try {
+						celdas.put(new Coordenada(i, j), EstadoCelda.MUERTA);
+					} 
+					catch (ExcepcionCoordenadaIncorrecta e) {
+						throw new ExcepcionEjecucion(e); 
+					} 
 					j++;
 				}
 				i++;
@@ -72,14 +77,19 @@ public class Tablero {
 	 * 
 	 * @param posicion Celda de la queremos saber su estado
 	 * @return El estado de la celda introducida como parametro
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public EstadoCelda getCelda(Coordenada posicion) {
-		if(celdas.containsKey(new Coordenada(posicion))) {
-			return celdas.get(new Coordenada(posicion));  
+	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
+		if(posicion!=null) {
+			if(celdas.containsKey(new Coordenada(posicion))) {
+				return celdas.get(new Coordenada(posicion));  
+			}
+			else {
+				throw new ExcepcionPosicionFueraTablero(dimensiones, posicion);
+			}
 		}
 		else {
-			muestraErrorPosicionInvalida(posicion);
-			return null;
+			throw new ExcepcionArgumentosIncorrectos ();
 		}
 	}
 	
@@ -102,8 +112,9 @@ public class Tablero {
 	 * 
 	 * @param posicion posicion de la queremos saver las vecinas
 	 * @return Todas las posiciones vecinas a la dada como parametro
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta {
 		
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
 		
@@ -154,8 +165,9 @@ public class Tablero {
 	 * @param patron Patron que se quiere copiar en el tablero
 	 * @param coordenadaInicial Coordenada desde la que empezara a copiar el patron
 	 * @return nos dice si es posible o no copiar el patron dentro del tablero
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) {
+	public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionCoordenadaIncorrecta {
 		boolean resp=true;
 		 
 		if(coordenadaInicial.getX()>=0 && coordenadaInicial.getY()>=0) {

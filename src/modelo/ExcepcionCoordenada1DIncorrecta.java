@@ -1,12 +1,18 @@
 package modelo;
 
-public class ExcepcionCoordenada1DIncorrecta extends Exception {
+public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrecta {
+	
 	private int x;
 	
-	public ExcepcionCoordenada1DIncorrecta() {
-		
+	public ExcepcionCoordenada1DIncorrecta(int x) {
+		super();
+		this.x=x;
 	}
-	//public String getMensage() {} 
+	
+	//Reparar.
+	public String getMensage() {
+		return "Hola";
+	} 
 	
 	public int getX() {return x;}
 }

@@ -1,5 +1,8 @@
 package modelo;
 
-class ExcepcionCoordenadaIncorrecta extends Exception {
-	public ExcepcionCoordenadaIncorrecta() {}
+class ExcepcionCoordenadaIncorrecta extends java.lang.Exception {
+
+	public ExcepcionCoordenadaIncorrecta() {
+		
+	}
 }

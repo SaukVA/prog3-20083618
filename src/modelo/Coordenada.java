@@ -23,16 +23,27 @@ public class Coordenada {
 	 * 
 	 * @param x 
 	 * @param y
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public Coordenada(int x, int y) {
-		this.x=x;
-		this.y=y;
-		NUMERO_COORDENADA++;
+	public Coordenada(int x, int y) throws ExcepcionCoordenadaIncorrecta {
+		if(x>=0 &&y>=0) {	
+			this.x=x;
+			this.y=y;
+			NUMERO_COORDENADA++;
+		}
+		else {
+			throw new ExcepcionCoordenadaIncorrecta ();
+		}
 	}
 	
 	public Coordenada(Coordenada otra) {
-		x=otra.x;
-		y=otra.y;
+		if(otra!=null) {
+			x=otra.x;
+			y=otra.y;
+		}
+		else {
+			throw new  ExcepcionArgumentosIncorrectos();
+		}
 	}
 	
 	/**devuelve el numero de Coordenada que es
@@ -62,10 +73,16 @@ public class Coordenada {
 	 * 
 	 * @param otra Es la Coordenada que se va a sumar con la que realiza la funcion
 	 * @return Suma de ambas coordenadas 
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public Coordenada suma(Coordenada otra) {
-		Coordenada ret= new Coordenada(otra.x+x,otra.y+y);
-		return ret;
+	public Coordenada suma(Coordenada otra) throws ExcepcionCoordenadaIncorrecta {
+		if(otra!=null) {
+			Coordenada ret= new Coordenada(otra.x+x,otra.y+y);
+			return ret;
+		}
+		else {
+			throw new ExcepcionArgumentosIncorrectos();
+		}
 	}
 	
 	/**
