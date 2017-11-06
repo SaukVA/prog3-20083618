@@ -1,4 +1,6 @@
-package modelo;
+package modelo.excepciones;
+
+import modelo.Coordenada;
 
 public class ExcepcionPosicionFueraTablero extends Exception {
 	

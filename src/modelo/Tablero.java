@@ -7,7 +7,12 @@ package modelo;
  */
 
 import static modelo.EstadoCelda.*;
-import modelo.Coordenada; 
+import modelo.Coordenada;
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+import modelo.excepciones.ExcepcionEjecucion;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 //import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
@@ -97,13 +102,19 @@ public class Tablero {
 	 * 
 	 * @param posicion celda de la que se quiere cambiar el estado
 	 * @param e Estado al que se le cambiar a la celda
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public void setCelda(Coordenada posicion, EstadoCelda e) {
+	public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {
 		if(celdas.containsKey(new Coordenada(posicion))) {
 			celdas.put(new Coordenada(posicion),e);  
 		}
 		else {
-			muestraErrorPosicionInvalida(posicion);
+			if(posicion==null) {
+				throw new ExcepcionArgumentosIncorrectos (); 
+			}
+			else {
+				throw new ExcepcionPosicionFueraTablero(dimensiones, posicion);
+			}
 		}
 	}
 	
@@ -119,41 +130,46 @@ public class Tablero {
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
 		
 		if(posicion.getX()>=0 && posicion.getY()>=0 && contiene(posicion)) {
-			for(int i=0; i<=7;i++) {
-				switch(i) {
-					case 0: 
-						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()-1)))
-							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()-1));
-						break;
-					case 1: 
-						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY())))
-							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()));
-						break;
-					case 2: 
-						if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()+1)))
-							resp.add(new Coordenada(posicion.getX()-1,posicion.getY()+1));
-						break;
-					case 3: 
-						if(contiene(new Coordenada(posicion.getX(),posicion.getY()+1)))
-							resp.add(new Coordenada(posicion.getX(),posicion.getY()+1));
-						break;
-					case 4: 
-						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()+1)))
-							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()+1));
-						break;
-					case 5: 
-						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY())))
-							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()));
-						break;
-					case 6:
-						if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()-1)))
-							resp.add(new Coordenada(posicion.getX()+1,posicion.getY()-1));
-						break;
-					case 7: 
-						if(contiene(new Coordenada(posicion.getX(),posicion.getY()-1)))
-							resp.add(new Coordenada(posicion.getX(),posicion.getY()-1));
-						break;
+			try {
+				for(int i=0; i<=7;i++) {
+					switch(i) {
+						case 0: 
+							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()-1)))
+								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()-1));
+							break;
+						case 1: 
+							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY())))
+								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()));
+							break;
+						case 2: 
+							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()+1)))
+								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()+1));
+							break;
+						case 3: 
+							if(contiene(new Coordenada(posicion.getX(),posicion.getY()+1)))
+								resp.add(new Coordenada(posicion.getX(),posicion.getY()+1));
+							break;
+						case 4: 
+							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()+1)))
+								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()+1));
+							break;
+						case 5: 
+							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY())))
+								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()));
+							break;
+						case 6:
+							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()-1)))
+								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()-1));
+							break;
+						case 7: 
+							if(contiene(new Coordenada(posicion.getX(),posicion.getY()-1)))
+								resp.add(new Coordenada(posicion.getX(),posicion.getY()-1));
+							break;
+					}
 				}
+			}
+			catch(ExcepcionCoordenadaIncorrecta e) {
+				throw new ExcepcionEjecucion(e); 
 			}
 		}
 		return resp;
@@ -166,33 +182,33 @@ public class Tablero {
 	 * @param coordenadaInicial Coordenada desde la que empezara a copiar el patron
 	 * @return nos dice si es posible o no copiar el patron dentro del tablero
 	 * @throws ExcepcionCoordenadaIncorrecta 
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public boolean cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionCoordenadaIncorrecta {
-		boolean resp=true;
+	public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
 		 
 		if(coordenadaInicial.getX()>=0 && coordenadaInicial.getY()>=0) {
 			Collection <Coordenada> c = patron.getPosiciones();
 			for( Coordenada coor : c) {
 				Coordenada suma=coordenadaInicial.suma(coor);
-				if(!this.celdas.containsKey(suma) && resp) {
-					resp=false;
-					muestraErrorPosicionInvalida(suma);
+				if(!this.celdas.containsKey(suma)) {
+					throw new ExcepcionPosicionFueraTablero(dimensiones, coor);
 				}
 			}
-			if(resp) {
-				for(Coordenada coor: c) {
+			
+			for(Coordenada coor: c) {
+				try {
 					EstadoCelda e = patron.getCelda(coor);
 					Coordenada suma2 = coordenadaInicial.suma(coor);
 					celdas.put(suma2, e);
 				}
+				catch (ExcepcionCoordenadaIncorrecta e) {
+					throw new ExcepcionEjecucion(e);
+				}
 			}
 		}
 		else {
-			muestraErrorPosicionInvalida(coordenadaInicial);
-			resp=false;
+			throw new ExcepcionArgumentosIncorrectos ();
 		}
-			
-		return resp;
 	}
 	
 	/**Metodo para saber si la celda se encuentra dento de las celdas del tablero
@@ -201,7 +217,12 @@ public class Tablero {
 	 * @return Respuesta booleana
 	 */
 	public boolean contiene(Coordenada posicion) {
-		return celdas.containsKey(posicion);
+		if(posicion!=null) {
+			return celdas.containsKey(posicion);
+		}
+		else {
+			throw new ExcepcionArgumentosIncorrectos ();
+		}
 	}
 	
 	/**Transforma los valores de las coordenadas y los estados de las celdas 
@@ -222,7 +243,13 @@ public class Tablero {
 				else {
 					if(i==0 || i==dimensiones.getY()+1) {sb.append("-");}
 					else {
-						EstadoCelda es = celdas.get(new Coordenada(j-1,i-1));
+						EstadoCelda es = null;
+						try {
+							es = celdas.get(new Coordenada(j-1,i-1));
+						} catch (ExcepcionCoordenadaIncorrecta e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						switch(es) {
 							case VIVA:
 								sb.append("*");

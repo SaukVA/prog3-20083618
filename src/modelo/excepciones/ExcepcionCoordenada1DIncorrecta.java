@@ -1,4 +1,4 @@
-package modelo;
+package modelo.excepciones;
 
 public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrecta {
 	

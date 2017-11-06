@@ -9,6 +9,11 @@ package modelo;
  */
 
 import java.util.ArrayList;
+
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 import static modelo.EstadoCelda.*;
 
 public class ReglaConway {
@@ -22,9 +27,14 @@ public class ReglaConway {
 	 * @param tablero Tablero del cual  se van a estraer las coordenadas vecinas
 	 * @param posicion Coordenada de la que se quiere saber el estado para la siguiete actualizacion
 	 * @return Devuele el valor del estado de la celda en la proxima ejecucion
+	 * @throws ExcepcionCoordenadaIncorrecta 
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
 		
+		if (tablero==null || posicion==null) {
+			throw new ExcepcionArgumentosIncorrectos();
+		}
 		EstadoCelda es = MUERTA;
 		ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
 		int vivas=0;

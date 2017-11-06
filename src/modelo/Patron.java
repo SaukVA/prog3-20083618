@@ -8,6 +8,9 @@ package modelo;
 
 import java.util.Collection;
 
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 public class Patron {
 	
 	private String nombre;
@@ -19,9 +22,14 @@ public class Patron {
 	 * @param nombre Nombre que se le asigna a el patron para identificar lo
 	 * @param tablero Forma que tiene el tablero del patron
 	 */
-	public Patron(String nombre, Tablero tablero) {
-		this.nombre=nombre;
-		this.tablero=tablero;
+	public Patron(String nombre, Tablero tablero){
+		if(nombre!=null && tablero!=null) {
+			this.nombre=nombre;
+			this.tablero=tablero;
+		}
+		else{
+			throw new ExcepcionArgumentosIncorrectos();
+		}
 	}
 	
 	/**Devuelve el nombre del patron
@@ -36,9 +44,15 @@ public class Patron {
 	 * 
 	 * @param posicion Coordenada que se le pasa como parametro a la funcion .getCelda()
 	 * @return resultados de la funcion
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public EstadoCelda getCelda(Coordenada posicion){
-		return tablero.getCelda(posicion);
+	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero{
+		if(posicion!=null) {
+			return tablero.getCelda(posicion);
+		}
+		else {
+			throw new ExcepcionArgumentosIncorrectos();
+		}
 	}
 	
 	/**Llamada a la funcion .getPosiciones() del objeto Tablero

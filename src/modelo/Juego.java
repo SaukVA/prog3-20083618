@@ -10,6 +10,11 @@ package modelo;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+import modelo.excepciones.ExcepcionEjecucion;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 public class Juego {
 	
 	private ReglaConway regla;
@@ -23,6 +28,9 @@ public class Juego {
 	 * @param regla La regla que va a sergui el juego 
 	 */
 	public Juego(Tablero tablero, ReglaConway regla) {
+		if(tablero==null || regla==null) {
+			throw new ExcepcionArgumentosIncorrectos();
+		}
 		this.tablero=tablero;
 		this.regla=regla;
 	}
@@ -33,29 +41,34 @@ public class Juego {
 	 * 
 	 * @param p Patron a cargar dentro del tablero
 	 * @param posicionInicial posicion desde la que se va a copiar el patron
+	 * @throws ExcepcionPosicionFueraTablero 
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) {
-		if(tablero.cargaPatron(p,posicionInicial)) {
+	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+			tablero.cargaPatron(p,posicionInicial);
 			patronesUsados.add(p);
-		}
-		else {
-			System.out.println("Error cargando plantilla " + p.getNombre() + " en "+posicionInicial.toString());
-		}
 	}
 	
 	/**Funcion que se encarga de actualizar los estados de las celdas 
+	 * @throws ExcepcionPosicionFueraTablero 
+	 * @throws ExcepcionCoordenadaIncorrecta 
 	 * 
 	 */
-	public void actualiza() {
-		Collection <Coordenada> c = tablero.getPosiciones();
-		ArrayList <EstadoCelda> estado = new ArrayList<EstadoCelda>();
-		int i=0;
-		for(Coordenada coor : c) {
-			estado.add(regla.calculaSiguienteEstadoCelda(tablero, coor));
+	public void actualiza() throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+		try {	
+			Collection <Coordenada> c = tablero.getPosiciones();
+			ArrayList <EstadoCelda> estado = new ArrayList<EstadoCelda>();
+			int i=0;
+			for(Coordenada coor : c) {
+				estado.add(regla.calculaSiguienteEstadoCelda(tablero, coor));
+			}
+			for(Coordenada coor : c) {
+				tablero.setCelda(coor, estado.get(i));
+				i++;
+			}
 		}
-		for(Coordenada coor : c) {
-			tablero.setCelda(coor, estado.get(i));
-			i++;
+		catch(ExcepcionPosicionFueraTablero e) {
+			throw new ExcepcionEjecucion(e);
 		}
 	}
 	
