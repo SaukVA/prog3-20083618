@@ -45,8 +45,9 @@ public class Juego {
 	 * @throws ExcepcionCoordenadaIncorrecta 
 	 */
 	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
-			tablero.cargaPatron(p,posicionInicial);
-			patronesUsados.add(p);
+		if(posicionInicial==null) {throw new ExcepcionArgumentosIncorrectos();}	
+		tablero.cargaPatron(p,posicionInicial);
+		patronesUsados.add(p);
 	}
 	
 	/**Funcion que se encarga de actualizar los estados de las celdas 
@@ -55,7 +56,7 @@ public class Juego {
 	 * 
 	 */
 	public void actualiza() throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
-		try {	
+		try {
 			Collection <Coordenada> c = tablero.getPosiciones();
 			ArrayList <EstadoCelda> estado = new ArrayList<EstadoCelda>();
 			int i=0;
@@ -70,6 +71,7 @@ public class Juego {
 		catch(ExcepcionPosicionFueraTablero e) {
 			throw new ExcepcionEjecucion(e);
 		}
+	
 	}
 	
 	/**Funcion encargada de devolver el tablero en el que se basa el 

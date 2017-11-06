@@ -30,22 +30,28 @@ public class ReglaConway {
 	 * @throws ExcepcionCoordenadaIncorrecta 
 	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionCoordenadaIncorrecta {
 		
 		if (tablero==null || posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
-		EstadoCelda es = MUERTA;
-		ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
-		int vivas=0;
-		for(int i=0; i<Ar.size();i++) {
-			if(tablero.getCelda(Ar.get(i))==VIVA) {
-				vivas++;
-			}
-		}
 		
-		if(vivas==3 && tablero.getCelda(posicion)==MUERTA) {es=VIVA;}
-		if((vivas==3 || vivas==2) && tablero.getCelda(posicion)==VIVA) {es=VIVA;}
+		EstadoCelda es = MUERTA;
+		try {
+			ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
+			int vivas=0;
+			for(int i=0; i<Ar.size();i++) {
+				if(tablero.getCelda(Ar.get(i))==VIVA) {
+					vivas++;
+				}
+			}
+			
+			if(vivas==3 && tablero.getCelda(posicion)==MUERTA) {es=VIVA;}
+			if((vivas==3 || vivas==2) && tablero.getCelda(posicion)==VIVA) {es=VIVA;}
+		}
+		catch(ExcepcionPosicionFueraTablero e) {
+			throw new ExcepcionPosicionFueraTablero(tablero.getDimensiones(),posicion);
+		}
 		
 		return es;
 	}

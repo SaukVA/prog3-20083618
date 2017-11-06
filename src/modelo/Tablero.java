@@ -33,6 +33,8 @@ public class Tablero {
 	 */
 	public Tablero(Coordenada dimensiones) {
 		
+		if (dimensiones==null) {throw new 	ExcepcionArgumentosIncorrectos();}
+		
 		this.dimensiones=new Coordenada(dimensiones);
 		
 		if(dimensiones.getX()>0 && dimensiones.getY()>0) {
@@ -124,53 +126,60 @@ public class Tablero {
 	 * @param posicion posicion de la queremos saver las vecinas
 	 * @return Todas las posiciones vecinas a la dada como parametro
 	 * @throws ExcepcionCoordenadaIncorrecta 
+	 * @throws ExcepcionPosicionFueraTablero 
 	 */
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
 		
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
+		if(posicion==null) {throw new ExcepcionArgumentosIncorrectos ();}
 		
-		if(posicion.getX()>=0 && posicion.getY()>=0 && contiene(posicion)) {
+		if(contiene(posicion)) {
 			try {
+				int maxX=dimensiones.getX();
+				int maxY=dimensiones.getY();
 				for(int i=0; i<=7;i++) {
 					switch(i) {
 						case 0: 
-							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()-1)))
+							if(posicion.getX()-1>=0 && posicion.getY()-1>=0 && posicion.getX()-1< maxX && posicion.getY()-1< maxY)
 								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()-1));
 							break;
 						case 1: 
-							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY())))
+							if(posicion.getX()-1>=0 && posicion.getY()>=0 && posicion.getX()-1< maxX && posicion.getY()< maxY)
 								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()));
 							break;
 						case 2: 
-							if(contiene(new Coordenada(posicion.getX()-1,posicion.getY()+1)))
+							if(posicion.getX()-1>=0 && posicion.getY()+1>=0 && posicion.getX()-1< maxX && posicion.getY()+1< maxY)
 								resp.add(new Coordenada(posicion.getX()-1,posicion.getY()+1));
 							break;
 						case 3: 
-							if(contiene(new Coordenada(posicion.getX(),posicion.getY()+1)))
+							if(posicion.getX()>=0 && posicion.getY()+1>=0 && posicion.getX()< maxX && posicion.getY()+1< maxY)
 								resp.add(new Coordenada(posicion.getX(),posicion.getY()+1));
 							break;
 						case 4: 
-							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()+1)))
+							if(posicion.getX()+1>=0 && posicion.getY()+1>=0 && posicion.getX()+1< maxX && posicion.getY()+1< maxY)
 								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()+1));
 							break;
 						case 5: 
-							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY())))
+							if(posicion.getX()+1>=0 && posicion.getY()>=0 && posicion.getX()+1< maxX && posicion.getY()< maxY)
 								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()));
 							break;
 						case 6:
-							if(contiene(new Coordenada(posicion.getX()+1,posicion.getY()-1)))
+							if(posicion.getX()+1>=0 && posicion.getY()-1>=0 && posicion.getX()+1< maxX && posicion.getY()-1< maxY)
 								resp.add(new Coordenada(posicion.getX()+1,posicion.getY()-1));
 							break;
 						case 7: 
-							if(contiene(new Coordenada(posicion.getX(),posicion.getY()-1)))
+							if(posicion.getX()>=0 && posicion.getY()-1>=0 && posicion.getX()< maxX && posicion.getY()-1< maxY)
 								resp.add(new Coordenada(posicion.getX(),posicion.getY()-1));
 							break;
 					}
 				}
 			}
-			catch(ExcepcionCoordenadaIncorrecta e) {
-				throw new ExcepcionEjecucion(e); 
+			catch(ExcepcionArgumentosIncorrectos e) {
+				throw new ExcepcionEjecucion(e);
 			}
+		}
+		else {
+			throw new ExcepcionPosicionFueraTablero(dimensiones,posicion);
 		}
 		return resp;
 	}
