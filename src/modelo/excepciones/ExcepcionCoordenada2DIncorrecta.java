@@ -12,7 +12,7 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 	
 	public String getMensaje() {
-		return"Hola";
+		return"Coordenada 2D Incorrecta";
 	}
 	
 	public int getX() {return x;}

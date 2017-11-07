@@ -11,7 +11,7 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	
 	//Reparar.
 	public String getMensage() {
-		return "Hola";
+		return "Coordenada 1D Incorrecta";
 	} 
 	
 	public int getX() {return x;}

@@ -14,7 +14,7 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	
 	//Reparar.
 	public String getMensage(){
-		return"Hola";
+		return"Posicion Fuera del Tabero";
 	}
 	
 	public Coordenada getDimensiones() {return dimensiones;}

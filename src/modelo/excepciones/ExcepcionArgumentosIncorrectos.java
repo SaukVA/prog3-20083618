@@ -4,6 +4,6 @@ public class ExcepcionArgumentosIncorrectos extends ExcepcionEjecucion {
 
 
 	public ExcepcionArgumentosIncorrectos() {
-		super("Fallo");
+		super("Fallo Argumento Incorrecto");
 	}
 }

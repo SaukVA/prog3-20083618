@@ -22,7 +22,7 @@ import java.util.HashMap;
 
 public class Tablero {
 	
-	private Coordenada dimensiones;
+	protected Coordenada dimensiones;
 	private HashMap<Coordenada,EstadoCelda> celdas = new HashMap<Coordenada,EstadoCelda>();
 	
 	/**Constructor del tablero
@@ -31,13 +31,13 @@ public class Tablero {
 	 * el tamaño del que se deve contruir el tablero, como el Hashmap que
 	 * nos ayuda a saber el estado de cada celda.
 	 */
-	public Tablero(Coordenada dimensiones) {
+	protected Tablero(Coordenada dimensiones) {
 		
 		if (dimensiones==null) {throw new 	ExcepcionArgumentosIncorrectos();}
 		
-		this.dimensiones=new Coordenada(dimensiones);
+		this.dimensiones=dimensiones;
 		
-		if(dimensiones.getX()>0 && dimensiones.getY()>0) {
+		/*if(dimensiones.getX()>0 && dimensiones.getY()>0) {
 			int i=0;
 			while(i<this.dimensiones.getX()) {
 				int j=0;
@@ -52,7 +52,7 @@ public class Tablero {
 				}
 				i++;
 			}
-		}
+		}*/
 	}//Cierre del contructor
 
 	/**Metodo que devuelve el tamaño del tablero en forma de cooordenada
@@ -72,13 +72,14 @@ public class Tablero {
 		return resp;
 	}
 	
+	
 	/** Metodo para mostrar que una celda no existe
 	 * 
 	 * @param c Coordenada de la queremos que queremos sacar el error 
 	 */
-	public void muestraErrorPosicionInvalida(Coordenada c) {
+	/*public void muestraErrorPosicionInvalida(Coordenada c) {
 		System.out.printf("Error: La celda "+ c.toString() +" no existe\n");
-	}
+	}*/
 	
 	/**Metodo para la obtencion del Estado de una Celda
 	 * 
