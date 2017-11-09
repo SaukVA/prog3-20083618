@@ -1,7 +1,11 @@
+/**
+ * @author Saul Verdu Aparicio DNI:20083618-H
+ */
 package modelo;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
+
 
 /**
  * En esta practica se pretende que se comprenda el leguage Java
@@ -13,19 +17,22 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
  * las coordenada(toString()), otro metodo encargado de 
  * la suma de dos  Coordenadas (suma()) y por ultimo el metodo 
  * equals() encatgado de comprobar si las dos coordenadas son iguales.
- * 
- * @author Saul Verdu Aparicio DNI:20083618-H
  **/
 
 public class Coordenada2D extends Coordenada {
+	
+	/** The x. */
 	private int x;
+	
+	/** The y. */
 	private int y;
 
-	/**Constructor de la Coordenada el cual  coge x e y los inicializa
-	 * 
-	 * @param x 
-	 * @param y
-	 * @throws ExcepcionCoordenadaIncorrecta 
+	/**
+	 * Constructor de la Coordenada el cual  coge x e y los inicializa.
+	 *
+	 * @param x the x
+	 * @param y the y
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	public Coordenada2D(int x, int y) throws ExcepcionCoordenadaIncorrecta {
 		if(x>=0 &&y>=0) {	
@@ -37,6 +44,11 @@ public class Coordenada2D extends Coordenada {
 		}
 	}
 	
+	/**
+	 * Instantiates a new coordenada 2 D.
+	 *
+	 * @param otra the otra
+	 */
 	public Coordenada2D(Coordenada2D otra) {
 		if(otra!=null) {
 			x=otra.x;
@@ -48,25 +60,34 @@ public class Coordenada2D extends Coordenada {
 	}
 	
 	/**
-	 * devuelve la Coordenada en formato de String
+	 * devuelve la Coordenada en formato de String.
+	 *
+	 * @return the string
 	 */
 	public String toString() {
 		return "(" + x + "," + y + ")";
 	}
 	
-	/** @return la X de a Coordenada
+	/**
+	 * Gets the x.
+	 *
+	 * @return la X de a Coordenada
 	 */
 	public int getX() {return x;}
 
-	/** @return la Y de a Coordenada
-	*/
+	/**
+	 * Gets the y.
+	 *
+	 * @return la Y de a Coordenada
+	 */
 	public int getY() {return y;}
 	
-	/**Funcion que suma dos coordenadas para obtener una nueva
-	 * 
+	/**
+	 * Funcion que suma dos coordenadas para obtener una nueva.
+	 *
 	 * @param otra Es la Coordenada que se va a sumar con la que realiza la funcion
-	 * @return Suma de ambas coordenadas 
-	 * @throws ExcepcionCoordenadaIncorrecta 
+	 * @return Suma de ambas coordenadas
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	
 	public Coordenada2D suma (Coordenada otra) throws ExcepcionCoordenadaIncorrecta{
@@ -81,7 +102,9 @@ public class Coordenada2D extends Coordenada {
 
 	
 	/**
-	 * La funcion ashCode sirve para dar le un codigo unico a cada objeto
+	 * La funcion ashCode sirve para dar le un codigo unico a cada objeto.
+	 *
+	 * @return the int
 	 */
 	public int hashCode() {
 		final int prime = 31;
@@ -92,7 +115,10 @@ public class Coordenada2D extends Coordenada {
 	}
 	
 	/**
-	 * Sirve para comprobar que las dos coordenadas son iguales
+	 * Sirve para comprobar que las dos coordenadas son iguales.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)

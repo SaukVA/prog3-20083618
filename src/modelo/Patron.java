@@ -1,26 +1,30 @@
-package modelo;
-
-/**En esta clase podemos guardar unos ciertos taberos como 
- * patrones para su posterior uso en un nuevo tablero. 
- * 
- * @author Saul Verdu Aparicio
+/**
+ * @author Saul Verdu Aparicio DNI:20083618-H
  */
+package modelo;
 
 import java.util.Collection;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+
+/**
+ * The Class Patron.
+ */
 public class Patron {
 	
+	/** The nombre. */
 	private String nombre;
-	private Tablero tablero;
 	
-	/**Constructor de la Clase Patron, se encarga de inicializar
-	 * los valores del objeto con los introducidos por parametros
-	 * 
-	 * @param nombre Nombre que se le asigna a el patron para identificar lo
-	 * @param tablero Forma que tiene el tablero del patron
+	/** The tablero. */
+	private Tablero tablero;
+
+	/**
+	 * Instantiates a new patron.
+	 *
+	 * @param nombre the nombre
+	 * @param tablero the tablero
 	 */
 	public Patron(String nombre, Tablero tablero){
 		if(nombre!=null && tablero!=null) {
@@ -31,20 +35,22 @@ public class Patron {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
 	}
-	
-	/**Devuelve el nombre del patron
-	 * 
-	 * @return Nombre del patron en forma de string
+
+	/**
+	 * Gets the nombre.
+	 *
+	 * @return the nombre
 	 */
 	public String getNombre() {
 		return this.nombre;
 	}
-	
-	/**Llamada a la funcion .getCelda() del objeto Tablero
-	 * 
-	 * @param posicion Coordenada que se le pasa como parametro a la funcion .getCelda()
-	 * @return resultados de la funcion
-	 * @throws ExcepcionPosicionFueraTablero 
+
+	/**
+	 * Gets the celda.
+	 *
+	 * @param posicion the posicion
+	 * @return the celda
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero{
 		if(posicion!=null) {
@@ -54,18 +60,18 @@ public class Patron {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
 	}
-	
-	/**Llamada a la funcion .getPosiciones() del objeto Tablero
-	 * 
-	 * @return Collection de todas las coordenadaass que conforman el HashMap del tablero
+
+	/**
+	 * Gets the posiciones.
+	 *
+	 * @return the posiciones
 	 */
 	public Collection <Coordenada> getPosiciones(){
 		return tablero.getPosiciones();
 	}
-	
-	/** Tranformacion del Patron en un string el cual se pueda mostrar por consola
-	 * 
-	 * @return String que se utiliza para mostrar el patron
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
