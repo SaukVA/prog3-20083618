@@ -43,14 +43,15 @@ public class TableroCeldasCuadradas extends Tablero2D {
 		}
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * devuelve el TableroCEldasCuadradas en formato de String.
+	 *
+	 * @return the string
 	 */
 	public String toString() {
 			
-		StringBuilder sb = new StringBuilder();
-			
 		try {
+			StringBuilder sb = new StringBuilder();
 			for (int i=0;i<=((Coordenada2D)dimensiones).getY()+1;i++) {
 				for(int j=0;j<=((Coordenada2D)dimensiones).getX()+1;j++) {
 					
@@ -75,15 +76,21 @@ public class TableroCeldasCuadradas extends Tablero2D {
 					if(j==((Coordenada2D)dimensiones).getX()+1) {sb.append("\n");}
 				}
 			}
+			return sb.toString();
 		}
 		catch(ExcepcionCoordenadaIncorrecta e) {
 			throw new ExcepcionEjecucion(e);
 		}
-		return sb.toString();
 	}
 
-	/* (non-Javadoc)
-	 * @see modelo.Tablero#getPosicionesVecinasCCW(modelo.Coordenada)
+	/**
+	 * Gets the posiciones vecinas CCW.
+	 *
+	 * @param posicion the posicion
+	 * @return the posiciones vecinas CCW
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
+	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero,ExcepcionPosicionFueraTablero {

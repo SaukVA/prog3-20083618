@@ -5,6 +5,7 @@ package modelo;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
+import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 
 /**
@@ -48,15 +49,19 @@ public class Coordenada1D extends Coordenada{
 	 */
 	public int getX() {return x;}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * devuelve la Coordenada en formato de String.
+	 *
+	 * @return the string
 	 */
 	public String toString() {
 		return "(" + x + ")";
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
+	/**
+	 * La funcion ashCode sirve para dar le un codigo unico a cada objeto.
+	 *
+	 * @return the int
 	 */
 	public int hashCode() {
 		final int prime = 31;
@@ -65,8 +70,11 @@ public class Coordenada1D extends Coordenada{
 		return result;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Sirve para comprobar que las dos coordenadas son iguales.
+	 *
+	 * @param obj the obj
+	 * @return true, if successful
 	 */
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,8 +89,12 @@ public class Coordenada1D extends Coordenada{
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see modelo.Coordenada#suma(modelo.Coordenada)
+	/**
+	 * Funcion que suma dos coordenadas para obtener una nueva.
+	 *
+	 * @param otra Es la Coordenada que se va a sumar con la que realiza la funcion
+	 * @return Suma de ambas coordenadas
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
 	public Coordenada1D suma(Coordenada otra) throws ExcepcionCoordenada1DIncorrecta{

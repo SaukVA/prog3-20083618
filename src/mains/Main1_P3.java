@@ -3,6 +3,8 @@ package mains;
 import java.util.ArrayList;
 
 import modelo.Coordenada;
+import modelo.Coordenada1D;
+import modelo.Coordenada2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**
@@ -18,12 +20,12 @@ public class Main1_P3 {
 	public static void main(String[] args)  {
 		try {
 			Coordenada c0; // no se instancia porque no se ha hecho new
-			Coordenada c1 = new Coordenada(0,0);
-			Coordenada c2 = new Coordenada(10,10);
-			Coordenada c3 = new Coordenada(4,3);
-			Coordenada c4 = new Coordenada(5,15);
-			Coordenada c5 = new Coordenada(c4);
-			Coordenada c6 = new Coordenada(2,5);
+			Coordenada c1 = new Coordenada1D(0);
+			Coordenada c2 = new Coordenada1D(10);
+			Coordenada c3 = new Coordenada1D(4);
+			Coordenada c4 = new Coordenada1D(5);
+			//Coordenada c5 = new Coordenada2D(c4);
+			Coordenada c6 = new Coordenada1D(25);
 			System.out.println(c1.toString());
 			System.out.println();
 			
@@ -36,16 +38,16 @@ public class Main1_P3 {
 			System.out.println(c4.toString());
 			System.out.println();
 	
-			System.out.println(c5.toString());
+			//System.out.println(c5.toString());
 			System.out.println();
 			
 			Coordenada sumada = c3.suma(c6);
 			System.out.println("Suma de " + c3.toString() + "+" + c6.toString() + "= " + sumada.toString());
 			System.out.println();
 			
-			Coordenada [] v = new Coordenada[5];
+			Coordenada2D [] v = new Coordenada2D[5];
 			for (int i=0; i<5; i++) {
-				v[i] = new Coordenada(i,4-i);
+				v[i] = new Coordenada2D(i,4-i);
 			}
 			
 			for (int i=0; i<5; i++) {
@@ -54,7 +56,7 @@ public class Main1_P3 {
 	
 			ArrayList<Coordenada> v2 = new ArrayList<Coordenada>();
 			for (int i=0; i<8; i++) {
-				v2.add(new Coordenada(i, i));
+				v2.add(new Coordenada1D(i));
 				System.out.println(v2.get(i).toString());
 			}
 			

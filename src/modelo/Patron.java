@@ -70,8 +70,10 @@ public class Patron {
 		return tablero.getPosiciones();
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * devuelve el Patron en formato de String.
+	 *
+	 * @return the string
 	 */
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

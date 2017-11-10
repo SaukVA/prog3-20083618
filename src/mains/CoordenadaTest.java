@@ -1,14 +1,17 @@
-package modelo;
+package mains;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import modelo.Coordenada;
+import modelo.Coordenada2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**
 @author jgonzalo
+@date 13/09/2013
  **/
 public class CoordenadaTest {
 	Coordenada2D c;

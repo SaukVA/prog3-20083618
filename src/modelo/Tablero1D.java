@@ -34,8 +34,14 @@ public class Tablero1D extends Tablero {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see modelo.Tablero#getPosicionesVecinasCCW(modelo.Coordenada)
+	/**
+	 * Gets the posiciones vecinas CCW.
+	 *
+	 * @param posicion the posicion
+	 * @return the posiciones vecinas CCW
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
+	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
 	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
@@ -62,8 +68,10 @@ public class Tablero1D extends Tablero {
 	 return resp;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * devuelve el Tablero1D en formato de String.
+	 *
+	 * @return the string
 	 */
 	public String toString() throws ExcepcionEjecucion {
 		StringBuilder sb = new StringBuilder();

@@ -21,9 +21,16 @@ public class ReglaConway extends Regla {
 	 */
 	public ReglaConway() {}
 
-	/* (non-Javadoc)
-	 * @see modelo.Regla#calculaSiguienteEstadoCelda(modelo.Tablero, modelo.Coordenada)
+	/**
+	 * Calcula siguiente estado celda.
+	 *
+	 * @param tablero the tablero
+	 * @param posicion the posicion
+	 * @return the estado celda
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
+	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
+	@Override
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionCoordenadaIncorrecta {
 		
 		if (tablero==null || posicion==null) {
