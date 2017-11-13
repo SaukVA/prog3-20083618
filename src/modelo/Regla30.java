@@ -58,7 +58,7 @@ public class Regla30 extends Regla {
 						
 					}
 				} 
-				
+				 
 				return es;
 			}
 			catch(ExcepcionPosicionFueraTablero e) {
