@@ -44,18 +44,18 @@ public class Tablero1D extends Tablero {
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)throws ExcepcionPosicionFueraTablero {
 			
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
 		
 		try {
 			if(contiene(posicion)) {	
-				if(((Coordenada1D)posicion).getX()+1>=0 && ((Coordenada1D)posicion).getX()+1<((Coordenada1D)dimensiones).getX()) {
-					resp.add(new Coordenada1D (((Coordenada1D)posicion).getX()+1));
+				if(((Coordenada1D)posicion).getX()-1>=0 ) {
+					resp.add(new Coordenada1D (((Coordenada1D)posicion).getX()-1));
 				}
 				
-				if(((Coordenada1D)posicion).getX()-1>=0 && ((Coordenada1D)posicion).getX()-1<((Coordenada1D)dimensiones).getX()) {
-					resp.add(new Coordenada1D (((Coordenada1D)posicion).getX()-1));
+				if(((Coordenada1D)posicion).getX()+1<((Coordenada1D)dimensiones).getX()) {
+					resp.add(new Coordenada1D (((Coordenada1D)posicion).getX()+1));
 				}
 			}
 			else {

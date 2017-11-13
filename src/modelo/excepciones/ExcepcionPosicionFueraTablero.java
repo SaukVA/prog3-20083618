@@ -13,7 +13,7 @@ public class ExcepcionPosicionFueraTablero extends Exception {
 	}
 	
 	//Reparar.
-	public String getMensage(){
+	public String getMessage(){
 		return"Posicion Fuera del Tabero";
 	}
 	

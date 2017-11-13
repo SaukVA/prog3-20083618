@@ -31,7 +31,7 @@ public class ReglaConway extends Regla {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionCoordenadaIncorrecta {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
 		
 		if (tablero==null || posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos();

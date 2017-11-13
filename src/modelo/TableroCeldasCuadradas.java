@@ -93,7 +93,7 @@ public class TableroCeldasCuadradas extends Tablero2D {
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero,ExcepcionPosicionFueraTablero {
+	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero,ExcepcionPosicionFueraTablero {
 		
 		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
 		if(posicion==null) {
@@ -143,7 +143,7 @@ public class TableroCeldasCuadradas extends Tablero2D {
 					}
 				}
 			}
-			catch(ExcepcionArgumentosIncorrectos e) {
+			catch(ExcepcionCoordenadaIncorrecta e) {
 				throw new ExcepcionEjecucion(e);
 			}
 		}

@@ -4,6 +4,7 @@
 package modelo;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 
@@ -35,13 +36,13 @@ public class Coordenada2D extends Coordenada {
 	 * @param y the y
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
-	public Coordenada2D(int x, int y) throws ExcepcionCoordenadaIncorrecta {
+	public Coordenada2D(int x, int y) throws ExcepcionCoordenada2DIncorrecta {
 		if(x>=0 &&y>=0) {	
 			this.x=x;
 			this.y=y;
 		}
 		else {
-			throw new ExcepcionCoordenadaIncorrecta ();
+			throw new ExcepcionCoordenada2DIncorrecta(x,y);
 		}
 	}
 	

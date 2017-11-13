@@ -109,7 +109,7 @@ public abstract class Tablero {
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
-	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
+	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
 
 	/**
 	 * Carga patron.
@@ -121,12 +121,12 @@ public abstract class Tablero {
 	 */
 	public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
 		 
-		if(coordenadaInicial!=null) {
+		if(coordenadaInicial!=null && patron!= null) {
 			Collection <Coordenada> c = patron.getPosiciones();
 			for( Coordenada coor : c) {
 				Coordenada suma=coordenadaInicial.suma(coor);
 				if(!this.celdas.containsKey(suma)) {
-					throw new ExcepcionPosicionFueraTablero(dimensiones, coor);
+					throw new ExcepcionPosicionFueraTablero(dimensiones, suma);
 				}
 			}
 			

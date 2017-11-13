@@ -32,7 +32,7 @@ public class Regla30 extends Regla {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion)throws ExcepcionPosicionFueraTablero, ExcepcionCoordenadaIncorrecta {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion)throws ExcepcionPosicionFueraTablero{
 		if (tablero==null || posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
@@ -43,8 +43,8 @@ public class Regla30 extends Regla {
 				EstadoCelda B =tablero.getCelda(posicion);
 
 				if(Ar.size()==2) {
-					EstadoCelda C =tablero.getCelda(Ar.get(0));
-					EstadoCelda A =tablero.getCelda(Ar.get(1));
+					EstadoCelda A =tablero.getCelda(Ar.get(0));
+					EstadoCelda C =tablero.getCelda(Ar.get(1));
 					
 					switch(A) {
 						case VIVA:

@@ -35,11 +35,11 @@ public class Coordenada1D extends Coordenada{
 	 * @param otra the otra
 	 * @throws ExcepcionCoordenada1DIncorrecta the excepcion coordenada 1 D incorrecta
 	 */
-	public Coordenada1D(Coordenada1D otra) throws ExcepcionCoordenada1DIncorrecta {
-		if(otra.x>0)
-			x=otra.x;
+	public Coordenada1D(Coordenada1D otra) throws ExcepcionArgumentosIncorrectos {
+		if(otra!=null)
+			x=otra.getX();
 		else
-			throw new ExcepcionCoordenada1DIncorrecta(x);
+			throw new ExcepcionArgumentosIncorrectos();
 	}
 	
 	/**

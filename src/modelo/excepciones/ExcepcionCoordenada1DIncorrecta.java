@@ -5,12 +5,11 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	private int x;
 	
 	public ExcepcionCoordenada1DIncorrecta(int x) {
-		super();
 		this.x=x;
 	}
 	
 	//Reparar.
-	public String getMensage() {
+	public String getMessage() {
 		return "Coordenada 1D Incorrecta";
 	} 
 	

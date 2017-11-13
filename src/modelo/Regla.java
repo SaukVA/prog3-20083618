@@ -25,5 +25,5 @@ public abstract class Regla {
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
-	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion)throws ExcepcionPosicionFueraTablero, ExcepcionCoordenadaIncorrecta;
+	public abstract EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion)throws ExcepcionPosicionFueraTablero;
 }

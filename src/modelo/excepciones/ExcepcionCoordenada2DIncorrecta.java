@@ -11,7 +11,7 @@ public class ExcepcionCoordenada2DIncorrecta extends ExcepcionCoordenadaIncorrec
 		this.y=y;
 	}
 	
-	public String getMensaje() {
+	public String getMessage() {
 		return"Coordenada 2D Incorrecta";
 	}
 	

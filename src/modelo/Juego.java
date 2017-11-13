@@ -62,7 +62,7 @@ public class Juego {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public void actualiza() throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+	public void actualiza() {
 		try {
 			Collection <Coordenada> c = tablero.getPosiciones();
 			ArrayList <EstadoCelda> estado = new ArrayList<EstadoCelda>();
