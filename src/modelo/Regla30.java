@@ -55,7 +55,7 @@ public class Regla30 extends Regla {
 							if(B==MUERTA && C==MUERTA) {es=MUERTA;}
 							else{es=VIVA;}
 						break;
-						
+						 
 					}
 				} 
 				 
