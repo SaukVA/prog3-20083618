@@ -57,7 +57,7 @@ public class Regla30 extends Regla {
 						break;
 						
 					}
-				}
+				} 
 				
 				return es;
 			}
