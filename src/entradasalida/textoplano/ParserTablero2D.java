@@ -21,6 +21,7 @@ public class ParserTablero2D {
 		boolean error=false;
 		char c;
 		int alto=0, ancho=0;
+		int k=0,p=0;
 		
 		try {
 			if (cadena==null) {
@@ -46,9 +47,8 @@ public class ParserTablero2D {
 				throw new ExcepcionLectura();
 			}
 			else {
-				for(int j=0;j<ancho;j++) {
+				for(int j=0;j<tam;j++) {
 					c=cadena.charAt(j);
-					int k=0,p=0;
 					
 					if(c!='\n') {
 						switch(c) {

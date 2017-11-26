@@ -15,9 +15,9 @@ public class MainPruebas {
 
 	public static void main(String[] args) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero, ExcepcionLectura {
 
-			ParserTablero1D p= new ParserTablero1D ();
-			String s= new String("** **");
-			Tablero1D t= (Tablero1D) p.leeTablero(s);
+			ParserTablero2D p= new ParserTablero2D ();
+			String s= new String("*****\n** **\n*****");
+			TableroCeldasCuadradas t= (TableroCeldasCuadradas) p.leeTablero(s);
 			System.out.println(t.toString());
 	}
 }
