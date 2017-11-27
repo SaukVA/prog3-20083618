@@ -10,13 +10,15 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 import static modelo.EstadoCelda.*;
 
+import entradasalida.IParserTablero;
+import entradasalida.IParserTablero;
 import entradasalida.excepciones.ExcepcionLectura;
 
-public class ParserTablero2D {
+public class ParserTablero2D implements IParserTablero{
 
 	public ParserTablero2D() {}
 	
-	public Tablero leeTablero(String cadena) throws ExcepcionLectura, ExcepcionPosicionFueraTablero {
+	public Tablero leeTablero(String cadena) throws ExcepcionLectura{
 		
 		boolean error=false;
 		char c;
@@ -44,7 +46,7 @@ public class ParserTablero2D {
 			TableroCeldasCuadradas t = new TableroCeldasCuadradas(ancho,alto);
 			
 			if(error || tam==0) {
-				throw new ExcepcionLectura();
+				throw new ExcepcionLectura(cadena);
 			}
 			else {
 				for(int j=0;j<tam;j++) {
@@ -71,6 +73,9 @@ public class ParserTablero2D {
 		}
 		catch(ExcepcionCoordenadaIncorrecta e) {
 			throw new ExcepcionEjecucion(e);
+		}
+		catch(ExcepcionPosicionFueraTablero f) {
+			throw new ExcepcionEjecucion(f);
 		}
 	}
 }

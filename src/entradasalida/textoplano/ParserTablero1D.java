@@ -3,6 +3,7 @@
  */
 package entradasalida.textoplano;
 
+import entradasalida.IParserTablero;
 import entradasalida.excepciones.ExcepcionLectura;
 import modelo.Coordenada1D;
 import modelo.Tablero;
@@ -18,7 +19,7 @@ import static modelo.EstadoCelda.*;
 /**
  * The Class ParserTablero1D.
  */
-public class ParserTablero1D {
+public class ParserTablero1D implements IParserTablero{
 	
 	/**
 	 * Instantiates a new parser tablero 1 D.
@@ -33,7 +34,7 @@ public class ParserTablero1D {
 	 * @throws ExcepcionLectura the excepcion lectura
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public Tablero leeTablero(String cadena) throws ExcepcionLectura, ExcepcionPosicionFueraTablero{
+	public Tablero leeTablero(String cadena) throws ExcepcionLectura{
 		
 		boolean error=false;
 		char c;
@@ -53,7 +54,7 @@ public class ParserTablero1D {
 			}
 			
 			if(error || tam==0) {
-				throw new ExcepcionLectura();
+				throw new ExcepcionLectura(cadena);
 			}
 			else {
 				for(int j=0; j< tam; j++) {
@@ -73,6 +74,9 @@ public class ParserTablero1D {
 		}
 		catch(ExcepcionCoordenadaIncorrecta e) {
 			throw new ExcepcionEjecucion(e);
+		}
+		catch(ExcepcionPosicionFueraTablero f) {
+			throw new ExcepcionEjecucion(f);
 		}
 		
 	}

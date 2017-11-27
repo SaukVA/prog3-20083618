@@ -5,9 +5,12 @@ import modelo.TableroCeldasCuadradas;
 import modelo.EstadoCelda;
 import modelo.Juego;
 import modelo.ReglaConway;
+import modelo.Tablero;
 import modelo.Tablero1D;
+import modelo.Tablero2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
+import entradasalida.ParserTableros;
 import entradasalida.excepciones.ExcepcionLectura;
 import entradasalida.textoplano.*;
 
@@ -15,9 +18,12 @@ public class MainPruebas {
 
 	public static void main(String[] args) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero, ExcepcionLectura {
 
-			ParserTablero2D p= new ParserTablero2D ();
-			String s= new String("*****\n** **\n*****");
-			TableroCeldasCuadradas t= (TableroCeldasCuadradas) p.leeTablero(s);
+			String s= new String("** **");
+			String s2= new String("**\n *");
+			ParserTableros p= new ParserTableros();
+			Tablero t= p.leeTablero(s);
+			Tablero t2= p.leeTablero(s2);
 			System.out.println(t.toString());
+			System.out.println(t2.toString());
 	}
 }
