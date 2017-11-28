@@ -1,3 +1,6 @@
+/**
+ * @author Saul Verdu Aparicio DNI:20083618-H
+ */
 package entradasalida.textoplano;
 
 import modelo.Coordenada2D;
@@ -14,10 +17,24 @@ import entradasalida.IParserTablero;
 import entradasalida.IParserTablero;
 import entradasalida.excepciones.ExcepcionLectura;
 
+/**
+ * The Class ParserTablero2D.
+ */
 public class ParserTablero2D implements IParserTablero{
 
+	/**
+	 * Instantiates a new parser tablero 2 D.
+	 */
 	public ParserTablero2D() {}
 	
+	/**
+	 * Lee tablero.
+	 *
+	 * @param cadena the cadena
+	 * @return the tablero
+	 * @throws ExcepcionLectura the excepcion lectura
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
+	 */
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura{
 		
 		boolean error=false;

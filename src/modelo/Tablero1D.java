@@ -13,7 +13,7 @@ import static modelo.EstadoCelda.*;
 /**
  * The Class Tablero1D.
  */
-public class Tablero1D extends Tablero {
+public class Tablero1D extends Tablero implements Imprimible {
 
 	/**
 	 * Instantiates a new tablero 1 D.
@@ -93,6 +93,15 @@ public class Tablero1D extends Tablero {
 			throw new ExcepcionEjecucion(e);
 		}
 		return sb.toString();
+	}
+	
+	/**
+	 * devuelve el TableroCEldasCuadradas en formato de String.
+	 *
+	 * @return the string
+	 */
+	public String generaCadena() {
+		return toString();
 	}
 
 }

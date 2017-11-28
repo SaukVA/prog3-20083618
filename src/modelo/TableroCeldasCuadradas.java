@@ -13,7 +13,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * The Class TableroCeldasCuadradas.
  */
-public class TableroCeldasCuadradas extends Tablero2D {
+public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 
 	/**
 	 * Instantiates a new tablero celdas cuadradas.
@@ -151,5 +151,14 @@ public class TableroCeldasCuadradas extends Tablero2D {
 			throw new ExcepcionPosicionFueraTablero(dimensiones,posicion);
 		}
 		return resp;
+	}
+	
+	/**
+	 * devuelve el TableroCEldasCuadradas en formato de String.
+	 *
+	 * @return the string
+	 */
+	public String generaCadena() {
+		return toString();
 	}
 }
