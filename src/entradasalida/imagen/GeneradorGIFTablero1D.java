@@ -10,7 +10,10 @@ import entradasalida.excepciones.ExcepcionGeneracion;
 import gifs.ImagenGIF;
 import modelo.Juego;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
+import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
+import modelo.excepciones.ExcepcionPosicionFueraTablero;
 import modelo.Coordenada1D;
+import modelo.EstadoCelda;
 
 /**
  * The Class GeneradorGIFTablero1D.
@@ -30,28 +33,37 @@ public class GeneradorGIFTablero1D implements IGeneradorFichero{
 	 * @param iteraciones the iteraciones
 	 * @throws ExcepcionGeneracion the excepcion generacion
 	 */
-	public void generaFichero(File file, Juego juego, int iteraciones) throws ExcepcionGeneracion {
+	public void generaFichero(File file, Juego juego, int iteraciones) throws ExcepcionGeneracion{
 		
-		if(file==null || juego==null) {
-			throw new ExcepcionArgumentosIncorrectos();
-		}
-		
-		if(iteraciones<=0) {
-			throw new ExcepcionGeneracion(new String("Numero de interacciones no valido")); 
-		}
-		int ancho = ((Coordenada1D) juego.getTablero().getDimensiones()).getX();
-		
-		ImagenGIF g = new ImagenGIF(ancho,iteraciones);
-		
-		for(int i=0; i<=iteraciones-1;i++) {
-			for(int j=0; j<=ancho-1;j++) {
-				g.pintaCuadrado(i, j);
+		try {
+			if(file==null || juego==null) {
+				throw new ExcepcionArgumentosIncorrectos();
 			}
-			juego.actualiza();
+			
+			if(iteraciones<=0) {
+				throw new ExcepcionGeneracion(new String("Numero de interacciones no valido")); 
+			}
+			int ancho = ((Coordenada1D) juego.getTablero().getDimensiones()).getX();
+			
+			ImagenGIF g = new ImagenGIF(ancho,iteraciones);
+			
+			for(int i=0; i<=iteraciones-1;i++) {
+				for(int j=0; j<=ancho-1;j++) {
+					if(juego.getTablero().getCelda((new Coordenada1D(j)))==EstadoCelda.VIVA) {
+						g.pintaCuadrado(i, j);
+					}
+				}
+				juego.actualiza();
+			}
+			
+			g.guardaFichero(file);
 		}
-		
-		g.guardaFichero(file);
-		
+		catch(ExcepcionCoordenada1DIncorrecta e) {
+			throw new ExcepcionGeneracion(e);
+		}
+		catch(ExcepcionPosicionFueraTablero f) {
+			throw new ExcepcionGeneracion(f);
+		}
 	}
 
 }
