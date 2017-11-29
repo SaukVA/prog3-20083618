@@ -10,13 +10,14 @@ import modelo.Tablero1D;
 import modelo.Tablero2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
+
 import entradasalida.ParserTableros;
 import entradasalida.excepciones.ExcepcionLectura;
 import entradasalida.textoplano.*;
 
 public class MainPruebas {
 
-	public static void main(String[] args) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero, ExcepcionLectura {
+	public static void main(String[] args) throws ExcepcionLectura{
 
 			String s= new String("** **");
 			String s2= new String("**\n *");
