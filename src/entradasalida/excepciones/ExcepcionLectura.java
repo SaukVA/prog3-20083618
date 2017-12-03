@@ -1,3 +1,6 @@
+/**
+ * @author Saul Verdu Aparicio DNI:20083618-H
+ */
 package entradasalida.excepciones;
 
 /**

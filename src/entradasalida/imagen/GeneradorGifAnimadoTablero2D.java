@@ -1,3 +1,6 @@
+/**
+ * @author Saul Verdu Aparicio DNI:20083618-H
+ */
 package entradasalida.imagen;
 
 import java.io.File;
@@ -13,10 +16,24 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+/**
+ * The Class GeneradorGifAnimadoTablero2D.
+ */
 public class GeneradorGifAnimadoTablero2D implements IGeneradorFichero {
 
+	/**
+	 * Instantiates a new generador gif animado tablero 2 D.
+	 */
 	public GeneradorGifAnimadoTablero2D() {}
 	
+	/**
+	 * Genera fichero.
+	 *
+	 * @param file the file
+	 * @param juego the juego
+	 * @param iteraciones the iteraciones
+	 * @throws ExcepcionGeneracion the excepcion generacion
+	 */
 	public void generaFichero(File file, Juego juego, int iteraciones) throws ExcepcionGeneracion {
 		
 		try {

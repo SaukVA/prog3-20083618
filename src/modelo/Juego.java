@@ -12,7 +12,6 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
-
 /**
  * The Class Juego.
  */
@@ -46,10 +45,9 @@ public class Juego {
 	 *
 	 * @param p the p
 	 * @param posicionInicial the posicion inicial
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) throws ExcepcionCoordenadaIncorrecta, ExcepcionPosicionFueraTablero {
+	public void cargaPatron(Patron p, Coordenada posicionInicial) throws  ExcepcionPosicionFueraTablero {
 		if(posicionInicial==null) {throw new ExcepcionArgumentosIncorrectos();}	
 		tablero.cargaPatron(p,posicionInicial);
 		patronesUsados.add(p);
@@ -58,9 +56,6 @@ public class Juego {
 
 	/**
 	 * Actualiza.
-	 *
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
-	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public void actualiza() {
 		try {
