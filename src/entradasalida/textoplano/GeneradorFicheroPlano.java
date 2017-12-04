@@ -44,7 +44,7 @@ public class GeneradorFicheroPlano implements IGeneradorFichero {
 			
 			for(int i=0; i<=iteraciones-1; i++) {
 				juego.actualiza();
-				fichero.println(((Imprimible) juego.getTablero()).generaCadena());
+				fichero.print(((Imprimible) juego.getTablero()).generaCadena());
 			}
 			
 			fichero.close();

@@ -50,7 +50,7 @@ public class GeneradorGIFTablero1D implements IGeneradorFichero{
 			for(int i=0; i<=iteraciones-1;i++) {
 				for(int j=0; j<=ancho-1;j++) {
 					if(juego.getTablero().getCelda((new Coordenada1D(j)))==EstadoCelda.VIVA) {
-						g.pintaCuadrado(i, j);
+						g.pintaCuadrado(j, i);
 					}
 				}
 				juego.actualiza();

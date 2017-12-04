@@ -54,7 +54,7 @@ public class GeneradorGifAnimadoTablero2D implements IGeneradorFichero {
 					for(int y=0; y<=alto-1;y++) {
 						
 						if(juego.getTablero().getCelda((new Coordenada2D(x,y)))==EstadoCelda.VIVA) {
-							
+							fotograma.pintaCuadrado(x,y);
 						}
 					}
 				}
