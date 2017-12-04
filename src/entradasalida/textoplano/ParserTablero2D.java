@@ -33,7 +33,6 @@ public class ParserTablero2D implements IParserTablero{
 	 * @param cadena the cadena
 	 * @return the tablero
 	 * @throws ExcepcionLectura the excepcion lectura
-	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura{
 		

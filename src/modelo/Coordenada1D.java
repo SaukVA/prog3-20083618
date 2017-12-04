@@ -5,7 +5,6 @@ package modelo;
 
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
-import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 
 /**
@@ -33,7 +32,7 @@ public class Coordenada1D extends Coordenada{
 	 * Instantiates a new coordenada 1 D.
 	 *
 	 * @param otra the otra
-	 * @throws ExcepcionCoordenada1DIncorrecta the excepcion coordenada 1 D incorrecta
+	 * @throws ExcepcionArgumentosIncorrectos the excepcion argumentos incorrectos
 	 */
 	public Coordenada1D(Coordenada1D otra) throws ExcepcionArgumentosIncorrectos {
 		if(otra!=null)
@@ -94,9 +93,8 @@ public class Coordenada1D extends Coordenada{
 	 *
 	 * @param otra Es la Coordenada que se va a sumar con la que realiza la funcion
 	 * @return Suma de ambas coordenadas
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionCoordenada1DIncorrecta the excepcion coordenada 1 D incorrecta
 	 */
-	@Override
 	public Coordenada1D suma(Coordenada otra) throws ExcepcionCoordenada1DIncorrecta{
 		if(otra!=null) {
 			Coordenada1D res=new Coordenada1D (x+((Coordenada1D) otra).getX());

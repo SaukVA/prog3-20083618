@@ -8,7 +8,6 @@ import modelo.excepciones.ExcepcionCoordenada2DIncorrecta;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 
-
 /**
  * En esta practica se pretende que se comprenda el leguage Java
  * con la traduccion de un esquema de UML a lenguaje Java.
@@ -34,7 +33,7 @@ public class Coordenada2D extends Coordenada {
 	 *
 	 * @param x the x
 	 * @param y the y
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionCoordenada2DIncorrecta the excepcion coordenada 2 D incorrecta
 	 */
 	public Coordenada2D(int x, int y) throws ExcepcionCoordenada2DIncorrecta {
 		if(x>=0 &&y>=0) {	

@@ -15,7 +15,6 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 import static modelo.EstadoCelda.*;
 
-
 /**
  * The Class ParserTablero1D.
  */
@@ -32,7 +31,6 @@ public class ParserTablero1D implements IParserTablero{
 	 * @param cadena the cadena
 	 * @return the tablero
 	 * @throws ExcepcionLectura the excepcion lectura
-	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
 	public Tablero leeTablero(String cadena) throws ExcepcionLectura{
 		

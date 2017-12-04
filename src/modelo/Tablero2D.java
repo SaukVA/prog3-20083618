@@ -5,6 +5,9 @@ package modelo;
 
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
+/**
+ * The Class Tablero2D.
+ */
 public abstract class Tablero2D extends Tablero{ 
 
 	/**

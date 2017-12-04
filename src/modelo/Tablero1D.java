@@ -39,7 +39,6 @@ public class Tablero1D extends Tablero implements Imprimible {
 	 *
 	 * @param posicion the posicion
 	 * @return the posiciones vecinas CCW
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
@@ -72,6 +71,7 @@ public class Tablero1D extends Tablero implements Imprimible {
 	 * devuelve el Tablero1D en formato de String.
 	 *
 	 * @return the string
+	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	public String toString() throws ExcepcionEjecucion {
 		StringBuilder sb = new StringBuilder();
