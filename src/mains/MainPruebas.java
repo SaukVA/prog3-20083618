@@ -1,19 +1,19 @@
 package mains;
 
-import modelo.Coordenada2D;
-import modelo.TableroCeldasCuadradas;
+import modelo.d1.Tablero1D;
+import modelo.d2.Coordenada2D;
+import modelo.d2.ReglaConway;
+import modelo.d2.Tablero2D;
+import modelo.d2.TableroCeldasCuadradas;
 import modelo.EstadoCelda;
 import modelo.Juego;
-import modelo.ReglaConway;
 import modelo.Tablero;
-import modelo.Tablero1D;
-import modelo.Tablero2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 import entradasalida.ParserTableros;
 import entradasalida.excepciones.ExcepcionLectura;
-import entradasalida.textoplano.*;
+import entradasalida.txt.*;
 
 public class MainPruebas {
 

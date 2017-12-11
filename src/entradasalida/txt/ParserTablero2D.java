@@ -1,11 +1,11 @@
 /**
  * @author Saul Verdu Aparicio DNI:20083618-H
  */
-package entradasalida.textoplano;
+package entradasalida.txt;
 
-import modelo.Coordenada2D;
 import modelo.Tablero;
-import modelo.TableroCeldasCuadradas;
+import modelo.d2.Coordenada2D;
+import modelo.d2.TableroCeldasCuadradas;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;

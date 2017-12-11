@@ -3,8 +3,8 @@ package mains;
 import java.util.ArrayList;
 
 import modelo.Coordenada;
-import modelo.Coordenada1D;
-import modelo.Coordenada2D;
+import modelo.d1.Coordenada1D;
+import modelo.d2.Coordenada2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**

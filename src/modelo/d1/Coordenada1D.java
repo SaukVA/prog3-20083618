@@ -1,10 +1,10 @@
 /**
  * @author Saul Verdu Aparicio DNI:20083618-H
  */
-package modelo;
+package modelo.d1;
 
+import modelo.Coordenada;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
 
 
 /**

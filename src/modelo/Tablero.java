@@ -17,21 +17,23 @@ import java.util.HashMap;
 
 /**
  * The Class Tablero.
+ *
+ * @param <TipoCoordenada> the generic type
  */
-public abstract class Tablero {
+public abstract class Tablero <TipoCoordenada extends Coordenada>{
 	
 	/** The dimensiones. */
-	protected Coordenada dimensiones;
+	protected TipoCoordenada dimensiones;
 	
 	/** The celdas. */
-	protected HashMap<Coordenada,EstadoCelda> celdas = new HashMap<Coordenada,EstadoCelda>();
+	protected HashMap<TipoCoordenada,EstadoCelda> celdas = new HashMap<TipoCoordenada,EstadoCelda>();
 	
 	/**
 	 * Instantiates a new tablero.
 	 *
 	 * @param dimensiones the dimensiones
 	 */
-	protected Tablero(Coordenada dimensiones) {
+	protected Tablero(TipoCoordenada dimensiones) {
 		
 		if (dimensiones==null) {throw new 	ExcepcionArgumentosIncorrectos();}
 		
@@ -44,7 +46,7 @@ public abstract class Tablero {
 	 *
 	 * @return the dimensiones
 	 */
-	public Coordenada getDimensiones() {
+	public TipoCoordenada getDimensiones() {
 		return dimensiones;
 	}
 	
@@ -53,8 +55,8 @@ public abstract class Tablero {
 	 *
 	 * @return the posiciones
 	 */
-	public Collection <Coordenada> getPosiciones(){
-		Set<Coordenada> resp = celdas.keySet();
+	public Collection <TipoCoordenada> getPosiciones(){
+		Set<TipoCoordenada> resp = celdas.keySet();
 		return resp;
 	}
 
@@ -65,7 +67,7 @@ public abstract class Tablero {
 	 * @return the celda
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public EstadoCelda getCelda(Coordenada posicion) throws ExcepcionPosicionFueraTablero {
+	public EstadoCelda getCelda(TipoCoordenada posicion) throws ExcepcionPosicionFueraTablero {
 		if(posicion!=null) {
 			if(celdas.containsKey(posicion)) {
 				return celdas.get(posicion);  
@@ -86,7 +88,7 @@ public abstract class Tablero {
 	 * @param e the e
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public void setCelda(Coordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {
+	public void setCelda(TipoCoordenada posicion, EstadoCelda e) throws ExcepcionPosicionFueraTablero {
 		if(celdas.containsKey(posicion)) {
 			celdas.put(posicion,e);  
 		}
@@ -108,7 +110,7 @@ public abstract class Tablero {
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
-	public abstract ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
+	public abstract ArrayList<TipoCoordenada> getPosicionesVecinasCCW(TipoCoordenada posicion) throws ExcepcionPosicionFueraTablero, ExcepcionEjecucion;
 
 	
 	/**
@@ -118,21 +120,21 @@ public abstract class Tablero {
 	 * @param coordenadaInicial the coordenada inicial
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public void cargaPatron(Patron patron, Coordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
+	public void cargaPatron(Patron<TipoCoordenada> patron, TipoCoordenada coordenadaInicial) throws ExcepcionPosicionFueraTablero {
 		
 		try {
 		if(coordenadaInicial!=null && patron!= null) {
-			Collection <Coordenada> c = patron.getPosiciones();
-			for( Coordenada coor : c) {
-				Coordenada suma=coordenadaInicial.suma(coor);
+			Collection <TipoCoordenada> c =patron.getPosiciones();
+			for( TipoCoordenada coor : c) {
+				TipoCoordenada suma= (TipoCoordenada) coordenadaInicial.suma(coor);
 				if(!this.celdas.containsKey(suma)) {
 					throw new ExcepcionPosicionFueraTablero(dimensiones, suma);
 				}
 			}
 			
-			for(Coordenada coor: c) {
+			for(TipoCoordenada coor: c) {
 					EstadoCelda e = patron.getCelda(coor);
-					Coordenada suma2 = coordenadaInicial.suma(coor);
+					TipoCoordenada suma2 = (TipoCoordenada) coordenadaInicial.suma(coor);
 					celdas.put(suma2, e);
 				
 			}
@@ -152,7 +154,7 @@ public abstract class Tablero {
 	 * @param posicion the posicion
 	 * @return true, if successful
 	 */
-	public boolean contiene(Coordenada posicion) {
+	public boolean contiene(TipoCoordenada posicion) {
 		if(posicion!=null) {
 			return celdas.containsKey(posicion);
 		}

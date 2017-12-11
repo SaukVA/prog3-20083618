@@ -1,7 +1,7 @@
 /**
  * @author Saul Verdu Aparicio DNI:20083618-H
  */
-package entradasalida.imagen;
+package entradasalida.gif;
 
 import java.io.File;
 
@@ -9,21 +9,21 @@ import entradasalida.IGeneradorFichero;
 import entradasalida.excepciones.ExcepcionGeneracion;
 import gifs.ImagenGIF;
 import modelo.Juego;
+import modelo.d1.Coordenada1D;
+import modelo.d1.ExcepcionCoordenada1DIncorrecta;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
-import modelo.excepciones.ExcepcionCoordenada1DIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
-import modelo.Coordenada1D;
 import modelo.EstadoCelda;
 
 /**
  * The Class GeneradorGIFTablero1D.
  */
-public class GeneradorGIFTablero1D implements IGeneradorFichero{
+public class GeneradorTableroCoordenada1D implements IGeneradorFichero{
 
 	/**
 	 * Instantiates a new generador GIF tablero 1 D.
 	 */
-	public GeneradorGIFTablero1D() {}
+	public GeneradorTableroCoordenada1D() {}
 	
 	/**
 	 * Genera fichero.

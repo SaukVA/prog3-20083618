@@ -1,8 +1,9 @@
 /**
  * @author Saul Verdu Aparicio DNI:20083618-H
  */
-package modelo;
+package modelo.d2;
 
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**

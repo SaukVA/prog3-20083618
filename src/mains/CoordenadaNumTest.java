@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import modelo.Coordenada;
-import modelo.Coordenada2D;
+import modelo.d2.Coordenada2D;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
 /**

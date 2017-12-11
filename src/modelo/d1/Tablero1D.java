@@ -1,10 +1,14 @@
 /**
  * @author Saul Verdu Aparicio DNI:20083618-H
  */
-package modelo;
+package modelo.d1;
 
 import java.util.ArrayList;
 
+import modelo.Coordenada;
+import modelo.EstadoCelda;
+import modelo.Imprimible;
+import modelo.Tablero;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
