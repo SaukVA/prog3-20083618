@@ -17,7 +17,7 @@ import static modelo.EstadoCelda.*;
 /**
  * The Class Tablero1D.
  */
-public class Tablero1D extends Tablero implements Imprimible {
+public class Tablero1D extends Tablero<Coordenada1D>  implements Imprimible {
 
 	/**
 	 * Instantiates a new tablero 1 D.
@@ -47,9 +47,9 @@ public class Tablero1D extends Tablero implements Imprimible {
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion)throws ExcepcionPosicionFueraTablero {
+	public ArrayList<Coordenada1D > getPosicionesVecinasCCW(Coordenada1D  posicion)throws ExcepcionPosicionFueraTablero {
 			
-		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
+		ArrayList<Coordenada1D > resp =new ArrayList<Coordenada1D >();
 		
 		try {
 			if(contiene(posicion)) {	

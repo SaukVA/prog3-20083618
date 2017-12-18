@@ -65,7 +65,7 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 					else {
 						if(i==0 || i==((Coordenada2D)dimensiones).getY()+1) {sb.append("-");}
 						else {
-							EstadoCelda es = celdas.get(new Coordenada2D(j-1,i-1));
+							EstadoCelda es = (EstadoCelda) celdas.get(new Coordenada2D(j-1,i-1));
 							switch(es) {
 								case VIVA:
 									sb.append("*");
@@ -96,9 +96,9 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */
 	@Override
-	public ArrayList<Coordenada> getPosicionesVecinasCCW(Coordenada posicion) throws ExcepcionPosicionFueraTablero,ExcepcionPosicionFueraTablero {
+	public ArrayList<Coordenada2D > getPosicionesVecinasCCW(Coordenada2D  posicion) throws ExcepcionPosicionFueraTablero,ExcepcionPosicionFueraTablero {
 		
-		ArrayList<Coordenada> resp =new ArrayList<Coordenada>();
+		ArrayList<Coordenada2D > resp =new ArrayList<Coordenada2D >();
 		if(posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos ();
 		}

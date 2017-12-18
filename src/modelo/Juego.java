@@ -15,16 +15,16 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * The Class Juego.
  */
-public class Juego {
+public class Juego <TipoCoordenada extends Coordenada>{
 	
 	/** The regla. */
-	private Regla regla;
+	private Regla<TipoCoordenada>  regla;
 	
 	/** The tablero. */
-	private Tablero tablero;
+	private Tablero<TipoCoordenada> tablero;
 	
 	/** The patrones usados. */
-	private ArrayList <Patron> patronesUsados = new ArrayList<Patron>();
+	private ArrayList <Patron<TipoCoordenada> > patronesUsados = new ArrayList<Patron<TipoCoordenada> >();
 	
 	/**
 	 * Instantiates a new juego.
@@ -32,7 +32,7 @@ public class Juego {
 	 * @param tablero the tablero
 	 * @param regla the regla
 	 */
-	public Juego(Tablero tablero, Regla regla) {
+	public Juego(Tablero<TipoCoordenada> tablero, Regla<TipoCoordenada>  regla) {
 		if(tablero==null || regla==null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
@@ -47,7 +47,7 @@ public class Juego {
 	 * @param posicionInicial the posicion inicial
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 */
-	public void cargaPatron(Patron p, Coordenada posicionInicial) throws  ExcepcionPosicionFueraTablero {
+	public void cargaPatron(Patron<TipoCoordenada>  p, TipoCoordenada posicionInicial) throws  ExcepcionPosicionFueraTablero {
 		if(posicionInicial==null) {throw new ExcepcionArgumentosIncorrectos();}	
 		tablero.cargaPatron(p,posicionInicial);
 		patronesUsados.add(p);
@@ -59,13 +59,13 @@ public class Juego {
 	 */
 	public void actualiza() {
 		try {
-			Collection <Coordenada> c = tablero.getPosiciones();
+			Collection <TipoCoordenada> c = tablero.getPosiciones();
 			ArrayList <EstadoCelda> estado = new ArrayList<EstadoCelda>();
 			int i=0;
-			for(Coordenada coor : c) {
+			for(TipoCoordenada coor : c) {
 				estado.add(regla.calculaSiguienteEstadoCelda(tablero, coor));
 			}
-			for(Coordenada coor : c) {
+			for(TipoCoordenada coor : c) {
 				tablero.setCelda(coor, estado.get(i));
 				i++;
 			}
@@ -82,12 +82,12 @@ public class Juego {
 	 *
 	 * @return the tablero
 	 */
-	public Tablero getTablero() {return this.tablero;}
+	public Tablero<TipoCoordenada> getTablero() {return this.tablero;}
 
 	/**
 	 * Gets the patrones.
 	 *
 	 * @return the patrones
 	 */
-	public ArrayList<Patron> getPatrones(){return patronesUsados;}
+	public ArrayList<Patron<TipoCoordenada> > getPatrones(){return patronesUsados;}
 }

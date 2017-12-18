@@ -18,7 +18,7 @@ import static modelo.EstadoCelda.*;
 /**
  * The Class ReglaConway.
  */
-public class ReglaConway extends Regla {
+public class ReglaConway extends  Regla<Coordenada2D> {
 
 	/**
 	 * Instantiates a new regla conway.
@@ -35,7 +35,7 @@ public class ReglaConway extends Regla {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion) throws ExcepcionPosicionFueraTablero {
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada2D> tablero, Coordenada2D posicion) throws ExcepcionPosicionFueraTablero {
 		
 		if (tablero==null || posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos();
@@ -43,7 +43,7 @@ public class ReglaConway extends Regla {
 		
 		EstadoCelda es = MUERTA;
 		try {
-			ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
+			ArrayList<Coordenada2D> Ar = tablero.getPosicionesVecinasCCW(posicion);
 			int vivas=0;
 			for(int i=0; i<Ar.size();i++) {
 				if(tablero.getCelda(Ar.get(i))==VIVA) {

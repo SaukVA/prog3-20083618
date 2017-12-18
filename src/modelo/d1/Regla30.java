@@ -19,7 +19,7 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 /**
  * The Class Regla30.
  */
-public class Regla30 extends Regla {
+public class Regla30 extends Regla<Coordenada1D> {
 
 	/**
 	 * Instantiates a new regla 30.
@@ -36,14 +36,14 @@ public class Regla30 extends Regla {
 	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
-	public EstadoCelda calculaSiguienteEstadoCelda(Tablero tablero, Coordenada posicion)throws ExcepcionPosicionFueraTablero{
+	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada1D> tablero, Coordenada1D posicion)throws ExcepcionPosicionFueraTablero{
 		if (tablero==null || posicion==null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
 		else {
 			EstadoCelda es = MUERTA;
 			try {
-				ArrayList<Coordenada> Ar = tablero.getPosicionesVecinasCCW(posicion);
+				ArrayList<Coordenada1D> Ar = tablero.getPosicionesVecinasCCW(posicion);
 				EstadoCelda B =tablero.getCelda(posicion);
 
 				if(Ar.size()==2) {
