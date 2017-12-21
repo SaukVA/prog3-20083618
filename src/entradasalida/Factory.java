@@ -41,7 +41,7 @@ public class Factory {
 	 */
 	public static IGeneradorFichero creaGeneradorFichero(Tablero tablero, String extension) throws ExcepcionGeneracion {
 		
-		if(tablero==null || extension==null) {
+		/*if(tablero==null || extension==null) {
 			throw new ExcepcionArgumentosIncorrectos();
 		}
 		
@@ -61,6 +61,19 @@ public class Factory {
 		
 		else {
 			throw new ExcepcionGeneracion("La Extension "+ extension +" no es valida");
+		}*/
+		String nombreDeLaClase = "entradasalida."+ extension + ".GeneradorTablero" + tablero.getDimensiones().getClass().getSimpleName();
+		
+		try {
+			Class<?> c = Class.forName(nombreDeLaClase);
+			return (IGeneradorFichero) c.newInstance(); 
+			
+		} 
+		catch (ClassNotFoundException e) {
+			throw new ExcepcionGeneracion(nombreDeLaClase);
+		}
+		catch(InstantiationException | IllegalAccessException f) {
+			throw new ExcepcionGeneracion();
 		}
 	}
 	
