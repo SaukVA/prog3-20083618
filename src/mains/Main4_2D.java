@@ -15,10 +15,17 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
-@author drizo
- **/
+ * The Class Main4_2D.
+ *
+ * @author drizo
+ */
 public class Main4_2D {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Falta el nombre del fichero de salida");			

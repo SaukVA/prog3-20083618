@@ -9,8 +9,11 @@ import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Patron.
+ *
+ * @param <TipoCoordenada> the generic type
  */
 public class Patron <TipoCoordenada extends Coordenada>{
 	

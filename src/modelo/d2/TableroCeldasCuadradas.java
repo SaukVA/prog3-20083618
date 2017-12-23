@@ -91,7 +91,7 @@ public class TableroCeldasCuadradas extends Tablero2D implements Imprimible{
 	 *
 	 * @param posicion the posicion
 	 * @return the posiciones vecinas CCW
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
+	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
 	 * @throws ExcepcionEjecucion the excepcion ejecucion
 	 */

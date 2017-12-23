@@ -12,8 +12,11 @@ import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 import modelo.excepciones.ExcepcionEjecucion;
 import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class Juego.
+ *
+ * @param <TipoCoordenada> the generic type
  */
 public class Juego <TipoCoordenada extends Coordenada>{
 	
@@ -25,6 +28,7 @@ public class Juego <TipoCoordenada extends Coordenada>{
 	
 	/** The patrones usados. */
 	private ArrayList <Patron<TipoCoordenada> > patronesUsados = new ArrayList<Patron<TipoCoordenada> >();
+	
 	
 	/**
 	 * Instantiates a new juego.

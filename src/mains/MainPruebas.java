@@ -15,8 +15,17 @@ import entradasalida.ParserTableros;
 import entradasalida.excepciones.ExcepcionLectura;
 import entradasalida.txt.*;
 
+/**
+ * The Class MainPruebas.
+ */
 public class MainPruebas {
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws ExcepcionLectura the excepcion lectura
+	 */
 	public static void main(String[] args) throws ExcepcionLectura{
 
 			String s= new String("** **");

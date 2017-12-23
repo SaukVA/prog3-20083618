@@ -25,9 +25,17 @@ import entradasalida.txt.GeneradorFicheroPlano;
 import entradasalida.txt.ParserTablero1D;
 import entradasalida.txt.ParserTablero2D;
 
+/**
+ * The Class MainCompilacionP5.
+ */
 public class MainCompilacionP5 {
 	
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String [] args) {
 		
 			//Factory, IGeneradorFichero, Patron

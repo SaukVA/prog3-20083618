@@ -31,6 +31,7 @@ public class Factory {
 	 */
 	public Factory() {}
 	
+	
 	/**
 	 * Crea generador fichero.
 	 *

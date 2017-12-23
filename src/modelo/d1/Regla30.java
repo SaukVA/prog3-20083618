@@ -33,7 +33,6 @@ public class Regla30 extends Regla<Coordenada1D> {
 	 * @param posicion the posicion
 	 * @return the estado celda
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada1D> tablero, Coordenada1D posicion)throws ExcepcionPosicionFueraTablero{

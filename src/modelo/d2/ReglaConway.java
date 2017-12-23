@@ -32,7 +32,6 @@ public class ReglaConway extends  Regla<Coordenada2D> {
 	 * @param posicion the posicion
 	 * @return the estado celda
 	 * @throws ExcepcionPosicionFueraTablero the excepcion posicion fuera tablero
-	 * @throws ExcepcionCoordenadaIncorrecta the excepcion coordenada incorrecta
 	 */
 	@Override
 	public EstadoCelda calculaSiguienteEstadoCelda(Tablero<Coordenada2D> tablero, Coordenada2D posicion) throws ExcepcionPosicionFueraTablero {

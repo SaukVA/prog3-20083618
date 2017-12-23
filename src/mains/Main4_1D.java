@@ -11,7 +11,16 @@ import modelo.d1.Coordenada1D;
 import modelo.d1.Regla30;
 import modelo.d1.Tablero1D;
 
+/**
+ * The Class Main4_1D.
+ */
 public class Main4_1D {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		if (args.length != 1) {
 			System.err.println("Falta el nombre del fichero de salida");			

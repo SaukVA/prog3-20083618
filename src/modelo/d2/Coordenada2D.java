@@ -7,7 +7,6 @@ import modelo.Coordenada;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 import modelo.excepciones.ExcepcionCoordenadaIncorrecta;
 
-
 /**
  * En esta practica se pretende que se comprenda el leguage Java
  * con la traduccion de un esquema de UML a lenguaje Java.

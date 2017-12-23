@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Collection;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -129,7 +130,7 @@ public class Tablero2DTest {
 	
 	@Test
 	public void testGetPosiciones() {
-		Set<Coordenada> sc = (Set<Coordenada>)tab.getPosiciones();
+		Collection<Coordenada2D> sc = tab.getPosiciones();
 		assertEquals("Total posiciones",40,sc.size());
 		for (int i=0; i<dim.getX();i++)
 			for (int j=0; j<dim.getY(); j++) {
@@ -148,7 +149,7 @@ public class Tablero2DTest {
 		Coordenada c = null;
 	    try {
 	    	c = new Coordenada2D(8,5);
-			assertNull("No existe celda (8,5)",tab.getCelda(c));
+			assertNull("No existe celda (8,5)",tab.getCelda((Coordenada2D) c));
 			fail("Error. Debió producirse ExcepcionFueraTablero");
 		} catch (ExcepcionPosicionFueraTablero e) {
 			assertEquals(dim,e.getDimensiones());
@@ -159,7 +160,7 @@ public class Tablero2DTest {
 			
 		try {
 			c =new Coordenada2D(8,0);
-		    assertNull ("No existe celda (8,0)",tab.getCelda(c));
+		    assertNull ("No existe celda (8,0)",tab.getCelda((Coordenada2D) c));
 		    fail("Error. Debió producirse ExcepcionFueraTablero");
 		} catch (ExcepcionPosicionFueraTablero e1) {
 			assertEquals(dim, e1.getDimensiones());
@@ -194,7 +195,7 @@ public class Tablero2DTest {
 		
 		try {
 			c = new Coordenada2D(7,5);		
-			tab.setCelda(c,EstadoCelda.VIVA);
+			tab.setCelda((Coordenada2D) c,EstadoCelda.VIVA);
 			fail("Error. Debió producirse ExcepcionFueraTablero");
 		} catch (ExcepcionPosicionFueraTablero ex) {
 				assertEquals (tab.getDimensiones(),ex.getDimensiones());
@@ -208,7 +209,7 @@ public class Tablero2DTest {
 			for (int i=0; i<10; i++) {
 		
 					c = new Coordenada2D(i,0);
-					tab.setCelda(c, EstadoCelda.VIVA);
+					tab.setCelda((Coordenada2D) c, EstadoCelda.VIVA);
 				
 			}
 			fail("Error. Debió producirse ExcepcionFueraTablero");

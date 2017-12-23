@@ -6,7 +6,6 @@ package modelo.d1;
 import modelo.Coordenada;
 import modelo.excepciones.ExcepcionArgumentosIncorrectos;
 
-
 /**
  * The Class Coordenada1D.
  */

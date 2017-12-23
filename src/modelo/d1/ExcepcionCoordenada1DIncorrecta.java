@@ -23,7 +23,7 @@ public class ExcepcionCoordenada1DIncorrecta extends ExcepcionCoordenadaIncorrec
 	}
 	
 	/**
-	 * Get The Menssage
+	 * Get The Menssage.
 	 *
 	 * @return the Menssage
 	 */

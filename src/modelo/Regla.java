@@ -7,6 +7,8 @@ import modelo.excepciones.ExcepcionPosicionFueraTablero;
 
 /**
  * The Class Regla.
+ *
+ * @param <TipoCoordenada> the generic type
  */
 public abstract class Regla <TipoCoordenada extends Coordenada>{
 	
